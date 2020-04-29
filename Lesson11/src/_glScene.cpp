@@ -52,7 +52,7 @@ GLint _glScene::initGL()
    foodTex->loadTexture("images/frutis.png");
    NPCTex->loadTexture("images/npc.png");
    plxForest->parallaxInit("images/forest.jpg");
-   ply->initPlayer("images/ply.png");
+   ply->initPlayer("images/ply2.png");
    ply->yPos = -0.3;
    ply->zPos = -3.0;
    npc->initNPC(NPCTex->tex);
