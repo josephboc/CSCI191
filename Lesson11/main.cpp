@@ -1,4 +1,4 @@
-
+#include <string.h>
 #pragma once
 
 #ifdef _WIN32

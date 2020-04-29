@@ -5,6 +5,7 @@
 #include <_textureLoader.h>
 #include <_timer.h>
 #include <_checkCollision.h>
+#include <stdlib.h>
 
 
 class _enms
