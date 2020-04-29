@@ -56,6 +56,7 @@
 		<Unit filename="include/_glLight.h" />
 		<Unit filename="include/_glScene.h" />
 		<Unit filename="include/_inputs.h" />
+		<Unit filename="include/_npc.h" />
 		<Unit filename="include/_parallax.h" />
 		<Unit filename="include/_player.h" />
 		<Unit filename="include/_sound.h" />
@@ -69,6 +70,7 @@
 		<Unit filename="src/_glLight.cpp" />
 		<Unit filename="src/_glScene.cpp" />
 		<Unit filename="src/_inputs.cpp" />
+		<Unit filename="src/_npc.cpp" />
 		<Unit filename="src/_parallax.cpp" />
 		<Unit filename="src/_player.cpp" />
 		<Unit filename="src/_sound.cpp" />

@@ -9,15 +9,18 @@
 #include <_sound.h>
 #include <iostream>
 #include <_food.h>
+#include <_npc.h>
 _Model *myModel = new _Model();
 _inputs *kBMs = new _inputs();
 _parallax *plxForest = new _parallax();
 _player *ply = new _player();
 _checkCollision *hit= new _checkCollision();
 _sound *snds = new _sound();
+_npc *npc = new _npc();
 
 _textureLoader *enmsTex = new _textureLoader();
 _textureLoader *foodTex = new _textureLoader();
+_textureLoader *NPCTex = new _textureLoader();
 _enms enms[20];
 _food food[20];
 
@@ -47,10 +50,13 @@ GLint _glScene::initGL()
    myModel->initModel();
    enmsTex->loadTexture("images/mon.png");
    foodTex->loadTexture("images/frutis.png");
+   NPCTex->loadTexture("images/npc.png");
    plxForest->parallaxInit("images/forest.jpg");
    ply->initPlayer("images/ply.png");
    ply->yPos = -0.3;
    ply->zPos = -3.0;
+   npc->initNPC(NPCTex->tex);
+   npc->xSize = npc->ySize = 0.25;
 
    for(int i=0; i<20;i++)
    {
@@ -64,6 +70,8 @@ GLint _glScene::initGL()
        food[i].xSize = food[i].ySize = .02;
 
    }
+
+
 
 
   //glEnable(GL_COLOR_MATERIAL);
@@ -93,12 +101,16 @@ GLint _glScene::drawScene()
 
 /*	glPushMatrix();                      // grouping starts
     glTranslated(0,0,-8.0);              //placing objects
-    myModel->drawModel(); */             //Teapot model
+    myModel->drawModel();             //Teapot model
 
-    glPopMatrix();                       // grouping ends
+    glPopMatrix();                       // grouping ends*/
     glPushMatrix();
      ply->actions();
      ply->drawPlayer();
+    glPopMatrix();
+
+    glPushMatrix();
+     npc->drawNPC();
     glPopMatrix();
 
     ply->hungerlower();
