@@ -19,6 +19,7 @@ class _sound
         ISoundEngine *engine = createIrrKlangDevice();
 
         void playMusic(char *);
+        void pauseMusic(char *);
         void playSound(char *);
         void pauseSound(char *);
         int initSounds();
