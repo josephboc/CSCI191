@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Lesson11" />
+		<Option title="SquirrelGame" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -72,6 +72,10 @@
 		<Unit filename="src/_sound.cpp" />
 		<Unit filename="src/_textureLoader.cpp" />
 		<Unit filename="src/_timer.cpp" />
-		<Extensions />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
