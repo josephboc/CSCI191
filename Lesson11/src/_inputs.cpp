@@ -84,7 +84,10 @@ void _inputs::keyPressed(_sound* snd)
     {
         case VK_LEFT:
         case VK_RIGHT:
-            snd->playSound("sounds/p.mp3");
+            snd->playSound("sounds/squirrel run.wav");
+            break;
+        case VK_TAB:
+            snd->pauseMusic("sounds/karasquare.mp3");
              break;
     }
 }
@@ -109,6 +112,8 @@ void _inputs::keyUp()   // Fill this depending on your game actions
         default: break;
     }
 }
+
+
 
 void _inputs::mouseEventDown(_Model* Mdl, double x, double y)
 {

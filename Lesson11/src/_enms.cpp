@@ -10,11 +10,11 @@ _enms::_enms()
     ySize = 0.5;
 
     rotateX=rotateY=rotateZ =0.0;
-    frames =7;
+    frames =4;
 
     xMin=yMin=0.0;
     xMax=1.0/(float)frames;
-    yMax=0.5;
+    yMax=1.0/6;
     action =0;
     theta =30*(3.141592/180);
 
@@ -71,11 +71,11 @@ void _enms::actions()
 {
     switch(action){
     case 0:
-          if(TE->getTicks()>60){
+          if(TE->getTicks()>120){
             xMin+=1.0/frames;
             xMax+=1.0/frames;
-            yMin =0.5;
-            yMax =1.0;
+            yMin =1.0/4.0;
+            yMax =2.0/4.0;
 
             rotateZ=0;
             if(xMax>=1){xMin=0;xMax=1.0/frames;}
@@ -89,8 +89,8 @@ void _enms::actions()
         if(TE->getTicks()>60){
             xMin+=1.0/frames;
             xMax+=1.0/frames;
-            yMin =0.0;
-            yMax =0.5;
+            yMin =2.0/4.0;
+            yMax =3.0/4.0;
 
             rotateZ=0;
             if(xMax>=1){xMin=0;xMax=1.0/frames;}
@@ -105,7 +105,7 @@ void _enms::actions()
             xMin =0.0/frames;
             xMax =1.0/frames;
             yMin =0.0;
-            yMax =0.5;
+            yMax =1.0/13;
 
            //  xSize = 1.0;
            //  ySize = 0.5;
@@ -131,7 +131,7 @@ void _enms::actions()
             xMin =0.0/frames;
             xMax =1.0/frames;
             yMin =0.0;
-            yMax =0.5;
+            yMax =1.0/13;
 
            //  xSize = 1.0;
            //  ySize = 0.5;

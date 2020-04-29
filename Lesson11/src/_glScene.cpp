@@ -46,7 +46,7 @@ GLint _glScene::initGL()
    _glLight Light(GL_LIGHT0);
 
    myModel->initModel();
-   enmsTex->loadTexture("images/mon.png");
+   enmsTex->loadTexture("images/smallblackcat.png");
    foodTex->loadTexture("images/frutis.png");
    plxSky->parallaxInit("images/sky.png");
    plxFloor->parallaxInit("images/floor.png");
@@ -71,7 +71,7 @@ GLint _glScene::initGL()
   //glEnable(GL_COLOR_MATERIAL);
 
    snds->initSounds();
-   snds->playMusic("sounds/mp.mp3");
+   snds->playMusic("sounds/karasquare.mp3");
    snds->tmr->start();
    return true;
 }
@@ -173,6 +173,7 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
            //  kBMs->keyEnv(plxFloor,0.005);   //handling Env
              kBMs->keyPressed(ply);     // handling player movement
              kBMs->keyPressed(snds);
+
               break;
 
         case WM_KEYUP:
