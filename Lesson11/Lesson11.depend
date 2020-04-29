@@ -208,15 +208,14 @@
 	"ik_IRefCounted.h"
 	"ik_ISoundSource.h"
 
-1588101098 source:c:\users\josep\desktop\csci191\lesson11\main.cpp
-	<string.h>
+1582195654 source:c:\users\josep\desktop\csci191\lesson11\main.cpp
 	<windows.h>
 	<_glScene.h>
 	<stdlib.h>
 	<iostream>
 	<windows.h>
 
-1588101367 c:\users\josep\desktop\csci191\lesson11\include\_glscene.h
+1582771280 c:\users\josep\desktop\csci191\lesson11\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -227,17 +226,16 @@
 1586074950 c:\users\josep\desktop\csci191\lesson11\include\_checkcollision.h
 	<math.h>
 
-1588112876 source:c:\users\josep\desktop\csci191\lesson11\src\_enms.cpp
+1586174636 source:c:\users\josep\desktop\csci191\lesson11\src\_enms.cpp
 	"_enms.h"
 
-1588100382 c:\users\josep\desktop\csci191\lesson11\include\_enms.h
+1586166800 c:\users\josep\desktop\csci191\lesson11\include\_enms.h
 	<GL/gl.h>
 	<_textureLoader.h>
 	<_timer.h>
 	<_checkCollision.h>
-	<stdlib.h>
 
-1588099436 c:\users\josep\desktop\csci191\lesson11\include\_textureloader.h
+1582597952 c:\users\josep\desktop\csci191\lesson11\include\_textureloader.h
 	<SOIL.h>
 	<GL/gl.h>
 	<iostream>
@@ -251,7 +249,7 @@
 1580957622 c:\users\josep\desktop\csci191\lesson11\include\_gllight.h
 	<_glScene.h>
 
-1588124971 source:c:\users\josep\desktop\csci191\lesson11\src\_glscene.cpp
+1587388388 source:c:\users\josep\desktop\csci191\lesson11\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<_Model.h>
@@ -261,8 +259,6 @@
 	<_enms.h>
 	<_checkCollision.h>
 	<_sound.h>
-	<iostream>
-	<_food.h>
 
 1582598850 c:\users\josep\desktop\csci191\lesson11\include\_model.h
 	<windows.h>
@@ -283,7 +279,7 @@
 	<windows.h>
 	<_textureLoader.h>
 
-1588125094 c:\users\josep\desktop\csci191\lesson11\include\_player.h
+1583973262 c:\users\josep\desktop\csci191\lesson11\include\_player.h
 	<GL/gl.h>
 	<_textureLoader.h>
 	<_timer.h>
@@ -294,7 +290,7 @@
 	<iostream>
 	<_timer.h>
 
-1588117236 source:c:\users\josep\desktop\csci191\lesson11\src\_inputs.cpp
+1587383294 source:c:\users\josep\desktop\csci191\lesson11\src\_inputs.cpp
 	"_inputs.h"
 
 1583205210 source:c:\users\josep\desktop\csci191\lesson11\src\_model.cpp
@@ -304,7 +300,7 @@
 1585049098 source:c:\users\josep\desktop\csci191\lesson11\src\_parallax.cpp
 	"_parallax.h"
 
-1588125035 source:c:\users\josep\desktop\csci191\lesson11\src\_player.cpp
+1585050780 source:c:\users\josep\desktop\csci191\lesson11\src\_player.cpp
 	"_player.h"
 
 1587386718 source:c:\users\josep\desktop\csci191\lesson11\src\_sound.cpp
@@ -316,15 +312,205 @@
 1583973452 source:c:\users\josep\desktop\csci191\lesson11\src\_timer.cpp
 	"_timer.h"
 
-1580347068 c:\users\josep\desktop\csci191\common\include\gl\glut.h
+1588123682 source:c:\users\lubpc\desktop\csci191-master\lesson11\main.cpp
+	<windows.h>
+	<_glScene.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1588123683 c:\users\lubpc\desktop\csci191-master\lesson11\include\_glscene.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+
+1588123683 source:c:\users\lubpc\desktop\csci191-master\lesson11\src\_checkcollision.cpp
+	"_checkCollision.h"
+
+1588123683 c:\users\lubpc\desktop\csci191-master\lesson11\include\_checkcollision.h
+	<math.h>
+
+1588123683 source:c:\users\lubpc\desktop\csci191-master\lesson11\src\_enms.cpp
+	"_enms.h"
+
+1588123683 c:\users\lubpc\desktop\csci191-master\lesson11\include\_enms.h
+	<GL/gl.h>
+	<_textureLoader.h>
+	<_timer.h>
+	<_checkCollision.h>
+
+1588123683 c:\users\lubpc\desktop\csci191-master\lesson11\include\_textureloader.h
+	<SOIL.h>
+	<GL/gl.h>
+	<iostream>
+
+1588123683 c:\users\lubpc\desktop\csci191-master\lesson11\include\_timer.h
+	<time.h>
+
+1588123683 source:c:\users\lubpc\desktop\csci191-master\lesson11\src\_gllight.cpp
+	"_glLight.h"
+
+1588123683 c:\users\lubpc\desktop\csci191-master\lesson11\include\_gllight.h
+	<_glScene.h>
+
+1588123683 source:c:\users\lubpc\desktop\csci191-master\lesson11\src\_glscene.cpp
+	"_glScene.h"
+	<_glLight.h>
+	<_Model.h>
+	<_inputs.h>
+	<_parallax.h>
+	<_player.h>
+	<_enms.h>
+	<_checkCollision.h>
+	<_sound.h>
+
+1588123683 c:\users\lubpc\desktop\csci191-master\lesson11\include\_model.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+
+1588123683 c:\users\lubpc\desktop\csci191-master\lesson11\include\_inputs.h
+	<windows.h>
+	<_Model.h>
+	<_parallax.h>
+	<_player.h>
+	<_sound.h>
+
+1588123683 c:\users\lubpc\desktop\csci191-master\lesson11\include\_parallax.h
+	<iostream>
+	<string>
+	<gl/gl.h>
+	<windows.h>
+	<_textureLoader.h>
+
+1588123683 c:\users\lubpc\desktop\csci191-master\lesson11\include\_player.h
+	<GL/gl.h>
+	<_textureLoader.h>
+	<_timer.h>
+
+1588123683 c:\users\lubpc\desktop\csci191-master\lesson11\include\_sound.h
+	<SNDS/irrKlang.h>
+	<stdlib.h>
+	<iostream>
+	<_timer.h>
+
+1588123683 source:c:\users\lubpc\desktop\csci191-master\lesson11\src\_inputs.cpp
+	"_inputs.h"
+
+1588123683 source:c:\users\lubpc\desktop\csci191-master\lesson11\src\_model.cpp
+	"_model.h"
+	<_textureLoader.h>
+
+1588123683 source:c:\users\lubpc\desktop\csci191-master\lesson11\src\_parallax.cpp
+	"_parallax.h"
+
+1588123683 source:c:\users\lubpc\desktop\csci191-master\lesson11\src\_player.cpp
+	"_player.h"
+
+1588123683 source:c:\users\lubpc\desktop\csci191-master\lesson11\src\_sound.cpp
+	"_sound.h"
+
+1588123683 source:c:\users\lubpc\desktop\csci191-master\lesson11\src\_textureloader.cpp
+	"_textureLoader.h"
+
+1588123683 source:c:\users\lubpc\desktop\csci191-master\lesson11\src\_timer.cpp
+	"_timer.h"
+
+1588127752 source:c:\users\lubpc\desktop\csci191\lesson11\src\_checkcollision.cpp
+	"_checkCollision.h"
+
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_checkcollision.h
+	<math.h>
+
+1588127751 source:c:\users\lubpc\desktop\csci191\lesson11\main.cpp
+	<string.h>
+	<windows.h>
+	<_glScene.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_glscene.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+
+1582592616 c:\users\lubpc\desktop\csci191\common\include\gl\glut.h
 	<windows.h>
 	<stdlib.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
-1582163728 c:\users\josep\desktop\csci191\common\include\soil.h
+1588127752 source:c:\users\lubpc\desktop\csci191\lesson11\src\_enms.cpp
+	"_enms.h"
 
-1517331846 c:\users\josep\desktop\csci191\common\include\snds\irrklang.h
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_enms.h
+	<GL/gl.h>
+	<_textureLoader.h>
+	<_timer.h>
+	<_checkCollision.h>
+	<stdlib.h>
+
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_textureloader.h
+	<SOIL.h>
+	<GL/gl.h>
+	<iostream>
+
+1582592616 c:\users\lubpc\desktop\csci191\common\include\soil.h
+
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_timer.h
+	<time.h>
+
+1588127752 source:c:\users\lubpc\desktop\csci191\lesson11\src\_gllight.cpp
+	"_glLight.h"
+
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_gllight.h
+	<_glScene.h>
+
+1588176719 source:c:\users\lubpc\desktop\csci191\lesson11\src\_glscene.cpp
+	"_glScene.h"
+	<_glLight.h>
+	<_Model.h>
+	<_inputs.h>
+	<_parallax.h>
+	<_player.h>
+	<_enms.h>
+	<_checkCollision.h>
+	<_sound.h>
+	<iostream>
+	<_food.h>
+
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_model.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_inputs.h
+	<windows.h>
+	<_Model.h>
+	<_parallax.h>
+	<_player.h>
+	<_sound.h>
+
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_parallax.h
+	<iostream>
+	<string>
+	<gl/gl.h>
+	<windows.h>
+	<_textureLoader.h>
+
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_player.h
+	<GL/gl.h>
+	<_textureLoader.h>
+	<_timer.h>
+
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_sound.h
+	<SNDS/irrKlang.h>
+	<stdlib.h>
+	<iostream>
+	<_timer.h>
+
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\irrklang.h
 	"ik_irrKlangTypes.h"
 	"ik_vec3d.h"
 	"ik_IRefCounted.h"
@@ -346,29 +532,29 @@
 	"ik_IAudioRecorder.h"
 	"ik_ISoundMixedOutputReceiver.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_irrklangtypes.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_irrklangtypes.h
 	<wchar.h>
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_vec3d.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_vec3d.h
 	<math.h>
 	"ik_irrKlangTypes.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_irefcounted.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_irefcounted.h
 	"ik_irrKlangTypes.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_ivirtualrefcounted.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_ivirtualrefcounted.h
 	"ik_irrKlangTypes.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_esoundoutputdrivers.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_esoundoutputdrivers.h
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_esoundengineoptions.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_esoundengineoptions.h
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_estreammodes.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_estreammodes.h
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_saudiostreamformat.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_saudiostreamformat.h
 	"ik_IRefCounted.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_isoundengine.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_isoundengine.h
 	"ik_IRefCounted.h"
 	"ik_vec3d.h"
 	"ik_ISoundSource.h"
@@ -377,55 +563,312 @@
 	"ik_IFileFactory.h"
 	"ik_ISoundMixedOutputReceiver.h"
 
-1517252432 c:\users\josep\desktop\csci191\common\include\snds\ik_isoundsource.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_isoundsource.h
 	"ik_IVirtualRefCounted.h"
 	"ik_vec3d.h"
 	"ik_EStreamModes.h"
 	"ik_SAudioStreamFormat.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_isound.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_isound.h
 	"ik_IVirtualRefCounted.h"
 	"ik_ISoundEffectControl.h"
 	"ik_vec3d.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_isoundeffectcontrol.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_isoundeffectcontrol.h
 	"ik_IVirtualRefCounted.h"
 	"ik_vec3d.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_ifilefactory.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_ifilefactory.h
 	"ik_IRefCounted.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_isoundmixedoutputreceiver.h
-	"ik_IRefCounted.h"
-	"ik_SAudioStreamFormat.h"
-
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_iaudiostream.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_isoundmixedoutputreceiver.h
 	"ik_IRefCounted.h"
 	"ik_SAudioStreamFormat.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_iaudiostreamloader.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_iaudiostream.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_iaudiostreamloader.h
 	"ik_IRefCounted.h"
 	"ik_IFileReader.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_ifilereader.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_ifilereader.h
 	"ik_IRefCounted.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_isoundstopeventreceiver.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_isoundstopeventreceiver.h
 	"ik_IRefCounted.h"
 	"ik_SAudioStreamFormat.h"
 
-1517252408 c:\users\josep\desktop\csci191\common\include\snds\ik_isounddevicelist.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_isounddevicelist.h
 	"ik_IRefCounted.h"
 
-1517252424 c:\users\josep\desktop\csci191\common\include\snds\ik_iaudiorecorder.h
+1588124431 c:\users\lubpc\desktop\csci191\common\include\snds\ik_iaudiorecorder.h
 	"ik_IRefCounted.h"
 	"ik_ISoundSource.h"
 
-1588124679 source:c:\users\josep\desktop\csci191\lesson11\src\_food.cpp
+1588177599 source:c:\users\lubpc\desktop\csci191\lesson11\src\_inputs.cpp
+	"_inputs.h"
+
+1588127752 source:c:\users\lubpc\desktop\csci191\lesson11\src\_model.cpp
+	"_model.h"
+	<_textureLoader.h>
+
+1588175575 source:c:\users\lubpc\desktop\csci191\lesson11\src\_parallax.cpp
+	"_parallax.h"
+
+1588127752 source:c:\users\lubpc\desktop\csci191\lesson11\src\_player.cpp
+	"_player.h"
+
+1588127752 source:c:\users\lubpc\desktop\csci191\lesson11\src\_sound.cpp
+	"_sound.h"
+
+1588127752 source:c:\users\lubpc\desktop\csci191\lesson11\src\_textureloader.cpp
+	"_textureLoader.h"
+
+1588127752 source:c:\users\lubpc\desktop\csci191\lesson11\src\_timer.cpp
+	"_timer.h"
+
+1588127752 source:c:\users\lubpc\desktop\csci191\lesson11\src\_food.cpp
 	"_food.h"
 	<_player.h>
 
-1588110225 c:\users\josep\desktop\csci191\lesson11\include\_food.h
+1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_food.h
+	<GL/gl.h>
+	<_textureLoader.h>
+	<_timer.h>
+	<_checkCollision.h>
+	<stdlib.h>
+
+1588129851 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\main.cpp
+	<string.h>
+	<windows.h>
+	<_glScene.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_glscene.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+
+1588129851 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_checkcollision.cpp
+	"_checkCollision.h"
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_checkcollision.h
+	<math.h>
+
+1588129851 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_enms.cpp
+	"_enms.h"
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_enms.h
+	<GL/gl.h>
+	<_textureLoader.h>
+	<_timer.h>
+	<_checkCollision.h>
+	<stdlib.h>
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_textureloader.h
+	<SOIL.h>
+	<GL/gl.h>
+	<iostream>
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_timer.h
+	<time.h>
+
+1588129851 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_food.cpp
+	"_food.h"
+	<_player.h>
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_food.h
+	<GL/gl.h>
+	<_textureLoader.h>
+	<_timer.h>
+	<_checkCollision.h>
+	<stdlib.h>
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_player.h
+	<GL/gl.h>
+	<_textureLoader.h>
+	<_timer.h>
+
+1588129851 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_gllight.cpp
+	"_glLight.h"
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_gllight.h
+	<_glScene.h>
+
+1588196821 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_glscene.cpp
+	"_glScene.h"
+	<_glLight.h>
+	<_Model.h>
+	<_inputs.h>
+	<_parallax.h>
+	<_player.h>
+	<_enms.h>
+	<_checkCollision.h>
+	<_sound.h>
+	<iostream>
+	<_food.h>
+	<_npc.h>
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_model.h
+	<windows.h>
+	<GL/glut.h>
+	<iostream>
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_inputs.h
+	<windows.h>
+	<_Model.h>
+	<_parallax.h>
+	<_player.h>
+	<_sound.h>
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_parallax.h
+	<iostream>
+	<string>
+	<gl/gl.h>
+	<windows.h>
+	<_textureLoader.h>
+
+1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_sound.h
+	<SNDS/irrKlang.h>
+	<stdlib.h>
+	<iostream>
+	<_timer.h>
+
+1588188351 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_inputs.cpp
+	"_inputs.h"
+
+1588129851 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_model.cpp
+	"_model.h"
+	<_textureLoader.h>
+
+1588188351 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_parallax.cpp
+	"_parallax.h"
+
+1588129851 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_player.cpp
+	"_player.h"
+
+1588129851 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_sound.cpp
+	"_sound.h"
+
+1588129851 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_textureloader.cpp
+	"_textureLoader.h"
+
+1588129851 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_timer.cpp
+	"_timer.h"
+
+1580347075 c:\users\phill\onedrive\documents\github\csci191\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1582162298 c:\users\phill\onedrive\documents\github\csci191\common\include\soil.h
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\irrklang.h
+	"ik_irrKlangTypes.h"
+	"ik_vec3d.h"
+	"ik_IRefCounted.h"
+	"ik_IVirtualRefCounted.h"
+	"ik_ESoundOutputDrivers.h"
+	"ik_ESoundEngineOptions.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+	"ik_ISoundEngine.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_IAudioStream.h"
+	"ik_IAudioStreamLoader.h"
+	"ik_ISoundEffectControl.h"
+	"ik_ISoundStopEventReceiver.h"
+	"ik_IFileFactory.h"
+	"ik_IFileReader.h"
+	"ik_ISoundDeviceList.h"
+	"ik_IAudioRecorder.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_irrklangtypes.h
+	<wchar.h>
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_vec3d.h
+	<math.h>
+	"ik_irrKlangTypes.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_irefcounted.h
+	"ik_irrKlangTypes.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_ivirtualrefcounted.h
+	"ik_irrKlangTypes.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_esoundoutputdrivers.h
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_esoundengineoptions.h
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_estreammodes.h
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_saudiostreamformat.h
+	"ik_IRefCounted.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_isoundengine.h
+	"ik_IRefCounted.h"
+	"ik_vec3d.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_EStreamModes.h"
+	"ik_IFileFactory.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_isoundsource.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_isound.h
+	"ik_IVirtualRefCounted.h"
+	"ik_ISoundEffectControl.h"
+	"ik_vec3d.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_isoundeffectcontrol.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_ifilefactory.h
+	"ik_IRefCounted.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_isoundmixedoutputreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_iaudiostream.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_iaudiostreamloader.h
+	"ik_IRefCounted.h"
+	"ik_IFileReader.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_ifilereader.h
+	"ik_IRefCounted.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_isoundstopeventreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_isounddevicelist.h
+	"ik_IRefCounted.h"
+
+1588190003 c:\users\phill\onedrive\documents\github\csci191\common\include\snds\ik_iaudiorecorder.h
+	"ik_IRefCounted.h"
+	"ik_ISoundSource.h"
+
+1588196771 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_npc.cpp
+	"_npc.h"
+
+1588193003 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_npc.h
 	<GL/gl.h>
 	<_textureLoader.h>
 	<_timer.h>

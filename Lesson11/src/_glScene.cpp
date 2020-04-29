@@ -9,16 +9,18 @@
 #include <_sound.h>
 #include <iostream>
 #include <_food.h>
+#include <_npc.h>
 _Model *myModel = new _Model();
 _inputs *kBMs = new _inputs();
-_parallax *plxSky = new _parallax();
-_parallax *plxFloor = new _parallax();
+_parallax *plxForest = new _parallax();
 _player *ply = new _player();
 _checkCollision *hit= new _checkCollision();
 _sound *snds = new _sound();
+_npc *npc = new _npc();
 
 _textureLoader *enmsTex = new _textureLoader();
 _textureLoader *foodTex = new _textureLoader();
+_textureLoader *NPCTex = new _textureLoader();
 _enms enms[20];
 _food food[20];
 
@@ -48,11 +50,13 @@ GLint _glScene::initGL()
    myModel->initModel();
    enmsTex->loadTexture("images/mon.png");
    foodTex->loadTexture("images/frutis.png");
-   plxSky->parallaxInit("images/sky.png");
-   plxFloor->parallaxInit("images/floor.png");
+   NPCTex->loadTexture("images/npc.png");
+   plxForest->parallaxInit("images/forest.jpg");
    ply->initPlayer("images/ply.png");
-   ply->yPos = -0.4;
+   ply->yPos = -0.3;
    ply->zPos = -3.0;
+   npc->initNPC(NPCTex->tex);
+   npc->xSize = npc->ySize = 0.25;
 
    for(int i=0; i<20;i++)
    {
@@ -66,6 +70,8 @@ GLint _glScene::initGL()
        food[i].xSize = food[i].ySize = .02;
 
    }
+
+
 
 
   //glEnable(GL_COLOR_MATERIAL);
@@ -84,24 +90,27 @@ GLint _glScene::drawScene()
    // glColor3f(1.0,0.0,0.0);              // setting colors
 
     glPushMatrix();
+
      glTranslated(0,0,-4.0);              //placing objects
      glScalef(6.3,6.3,1);
-     plxSky->drawSquare(screenWidth,screenHeight); // draw background
-     plxSky->scroll(false,"right",0.0005);            // Automatic background movement
+     plxForest->drawSquare(screenWidth,screenHeight); // draw background
+     plxForest->scroll(false,"right",0.0005);            // Automatic background movement
 
-     plxFloor->drawSquare(screenWidth,screenHeight); // draw background
-     plxFloor->scroll(false,"right",0.005);            // Automatic background movement
     glPopMatrix();
 
 
-	glPushMatrix();                      // grouping starts
+/*	glPushMatrix();                      // grouping starts
     glTranslated(0,0,-8.0);              //placing objects
-    myModel->drawModel();
+    myModel->drawModel();             //Teapot model
 
-    glPopMatrix();                       // grouping ends
+    glPopMatrix();                       // grouping ends*/
     glPushMatrix();
      ply->actions();
      ply->drawPlayer();
+    glPopMatrix();
+
+    glPushMatrix();
+     npc->drawNPC();
     glPopMatrix();
 
     ply->hungerlower();
@@ -169,9 +178,8 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
              kBMs->wParam = wParam;
              kBMs->keyPressed(myModel); //handling Model Movements
-          //   kBMs->keyEnv(plxSky,0.0005);   //handling Env
-           //  kBMs->keyEnv(plxFloor,0.005);   //handling Env
              kBMs->keyPressed(ply);     // handling player movement
+             kBMs->keyEnv(plxForest, 0.01);   //handling environment
              kBMs->keyPressed(snds);
               break;
 
@@ -179,7 +187,7 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
              kBMs->keyUp(ply);
              break;
 
-       /*case WM_LBUTTONDOWN:
+       case WM_LBUTTONDOWN:
             kBMs->wParam = wParam;
             kBMs->mouseEventDown(myModel,LOWORD(lParam),HIWORD(lParam));
             break;
@@ -203,6 +211,6 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
              break;
         case WM_MOUSEWHEEL:
              kBMs->mouseWheel(myModel,(double)GET_WHEEL_DELTA_WPARAM(wParam));
-            break; */
+            break;
     }
 }

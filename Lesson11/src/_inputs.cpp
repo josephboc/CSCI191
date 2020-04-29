@@ -12,7 +12,7 @@ _inputs::~_inputs()
     //dtor
 }
 
-/*
+
 void _inputs::keyEnv(_parallax* plx, float speed)
 {
     switch(wParam){
@@ -24,7 +24,7 @@ void _inputs::keyEnv(_parallax* plx, float speed)
             plx->xMin -=speed;
             plx->xMax -=speed;
              break;
-        case VK_DOWN:
+    /*    case VK_DOWN:
              plx->yMin +=speed;
              plx->yMax +=speed;
             break;
@@ -32,9 +32,10 @@ void _inputs::keyEnv(_parallax* plx, float speed)
             plx->yMin -=speed;
             plx->yMax -=speed;
             break;
+    */
     }
 }
-*/
+
 
 void _inputs::keyPressed(_Model* Mdl)
 {
