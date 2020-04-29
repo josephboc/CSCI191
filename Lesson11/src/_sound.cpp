@@ -1,5 +1,5 @@
 #include "_sound.h"
-
+#include "_glScene.h"
 _sound::_sound()
 {
     //ctor
@@ -13,6 +13,11 @@ _sound::~_sound()
 void _sound::playMusic(char* File)
 {
     engine->play2D(File,true);
+}
+
+void _sound::pauseMusic(char* File)
+{
+    engine->play2D(File,false);
 }
 
 void _sound::playSound(char* File)

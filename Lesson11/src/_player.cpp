@@ -36,6 +36,9 @@ _player::_player()
     xMove = .1;
     hunger = 1;
     hungerrate = .01;
+    speed = 0.0;
+    strength = 0.0;
+    cuteness = 0.0;
 }
 
 _player::~_player()

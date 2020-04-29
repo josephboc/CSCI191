@@ -19,6 +19,9 @@ private:
 
     public:
     float hunger;
+    float speed;
+    float strength;
+    float cuteness;
     float hungerrate;
         _player();
         virtual ~_player();
