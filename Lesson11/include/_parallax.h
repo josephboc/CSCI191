@@ -23,6 +23,8 @@ class _parallax
 
         float xMax,yMax,xMin,yMin;     //  For texture coordinates
 
+        int currentSeason;
+
     protected:
 
     private:

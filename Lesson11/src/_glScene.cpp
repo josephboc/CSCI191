@@ -9,15 +9,20 @@
 #include <_sound.h>
 #include <iostream>
 #include <_food.h>
+#include<_timer.h>
+
 _Model *myModel = new _Model();
 _inputs *kBMs = new _inputs();
-_parallax *plxForest = new _parallax();
+_parallax *Season = new _parallax();  //Season background parallax
 _player *ply = new _player();
 _checkCollision *hit= new _checkCollision();
 _sound *snds = new _sound();
 
+_timer *SeasonTimer = new _timer();
+
 _textureLoader *enmsTex = new _textureLoader();
 _textureLoader *foodTex = new _textureLoader();
+
 _enms enms[20];
 _food food[20];
 
@@ -47,7 +52,31 @@ GLint _glScene::initGL()
    myModel->initModel();
    enmsTex->loadTexture("images/mon.png");
    foodTex->loadTexture("images/frutis.png");
-   plxForest->parallaxInit("images/forest.jpg");
+   if(Season->currentSeason == 0){
+        Season->parallaxInit("images/Summer.jpg");
+   }
+   else if(Season->currentSeason == 1){
+        Season->parallaxInit("images/Summer.jpg");
+        Season->xMax =0.0;
+        Season->yMax =0.0;
+        Season->xMin =0.5;
+        Season->yMin =0.5;
+   }
+   else if(Season->currentSeason == 2){
+        Season->parallaxInit("images/Fall.png");
+        Season->xMax =0.0;
+        Season->yMax =0.0;
+        Season->xMin =0.3;
+        Season->yMin =0.3;
+   }
+   else if(Season->currentSeason == 3){
+        Season->parallaxInit("images/Winter.png");
+        Season->xMax =0.0;
+        Season->yMax =0.0;
+        Season->xMin =1.0;
+        Season->yMin =1.0;
+   }
+   //Winter->parallaxInit("images/Winter.png");
    ply->initPlayer("images/ply.png");
    ply->yPos = -0.3;
    ply->zPos = -3.0;
@@ -85,17 +114,22 @@ GLint _glScene::drawScene()
 
      glTranslated(0,0,-4.0);              //placing objects
      glScalef(6.3,6.3,1);
-     plxForest->drawSquare(screenWidth,screenHeight); // draw background
-     plxForest->scroll(false,"right",0.0005);            // Automatic background movement
+     Season->drawSquare(screenWidth,screenHeight); // draw background
+     Season->scroll(false,"right",0.0005);            // Automatic background movement
+     if(SeasonTimer->getTicks()>10){
+        Season->currentSeason++;
+        if(Season->currentSeason>3){Season->currentSeason=0;}
+        SeasonTimer->reset();
+     }
 
     glPopMatrix();
 
 
 /*	glPushMatrix();                      // grouping starts
-    glTranslated(0,0,-8.0);              //placing objects
-    myModel->drawModel(); */             //Teapot model
+        glTranslated(0,0,-8.0);          //placing objects
+        myModel->drawModel();            //Teapot model
+    glPopMatrix();                       // grouping ends */
 
-    glPopMatrix();                       // grouping ends
     glPushMatrix();
      ply->actions();
      ply->drawPlayer();
@@ -167,7 +201,7 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
              kBMs->wParam = wParam;
              kBMs->keyPressed(myModel); //handling Model Movements
              kBMs->keyPressed(ply);     // handling player movement
-             kBMs->keyEnv(plxForest, 0.01);   //handling environment
+             kBMs->keyEnv(Season, 0.01);   //handling environment
              kBMs->keyPressed(snds);
               break;
 

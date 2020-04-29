@@ -467,7 +467,7 @@
 1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_gllight.h
 	<_glScene.h>
 
-1588176719 source:c:\users\lubpc\desktop\csci191\lesson11\src\_glscene.cpp
+1588201386 source:c:\users\lubpc\desktop\csci191\lesson11\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<_Model.h>
@@ -479,6 +479,7 @@
 	<_sound.h>
 	<iostream>
 	<_food.h>
+	<_timer.h>
 
 1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_model.h
 	<windows.h>
@@ -492,7 +493,7 @@
 	<_player.h>
 	<_sound.h>
 
-1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_parallax.h
+1588198395 c:\users\lubpc\desktop\csci191\lesson11\include\_parallax.h
 	<iostream>
 	<string>
 	<gl/gl.h>
@@ -614,7 +615,7 @@
 	"_model.h"
 	<_textureLoader.h>
 
-1588175575 source:c:\users\lubpc\desktop\csci191\lesson11\src\_parallax.cpp
+1588198606 source:c:\users\lubpc\desktop\csci191\lesson11\src\_parallax.cpp
 	"_parallax.h"
 
 1588127752 source:c:\users\lubpc\desktop\csci191\lesson11\src\_player.cpp

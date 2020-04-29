@@ -10,6 +10,7 @@ _parallax::_parallax()
     yMax =0.0;
     xMin =0.5;
     yMin =0.5;
+    currentSeason = 2;  //0 for spring, 1 for summer, 2 for fall, 3 for winter
 }
 
 _parallax::~_parallax()
