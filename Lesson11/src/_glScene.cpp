@@ -7,7 +7,8 @@
 #include <_enms.h>
 #include <_checkCollision.h>
 #include <_sound.h>
-
+#include <iostream>
+#include <_food.h>
 _Model *myModel = new _Model();
 _inputs *kBMs = new _inputs();
 _parallax *plxSky = new _parallax();
@@ -17,7 +18,9 @@ _checkCollision *hit= new _checkCollision();
 _sound *snds = new _sound();
 
 _textureLoader *enmsTex = new _textureLoader();
+_textureLoader *foodTex = new _textureLoader();
 _enms enms[20];
+_food food[20];
 
 _glScene::_glScene()
 {
@@ -44,6 +47,7 @@ GLint _glScene::initGL()
 
    myModel->initModel();
    enmsTex->loadTexture("images/mon.png");
+   foodTex->loadTexture("images/frutis.png");
    plxSky->parallaxInit("images/sky.png");
    plxFloor->parallaxInit("images/floor.png");
    ply->initPlayer("images/ply.png");
@@ -53,10 +57,16 @@ GLint _glScene::initGL()
    for(int i=0; i<20;i++)
    {
        enms[i].initEnemy(enmsTex->tex);
-       enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*5-2.5,-0.2,-2.5);
+       enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*1-2.5,-0.2,-2.5);
        enms[i].xMove= (float)(rand()/float(RAND_MAX))/100;
        enms[i].xSize = enms[i].ySize = float(rand()%12)/85.0;
+
+       food[i].initFood(foodTex->tex);
+       food[i].placeFood((float)(rand()/float(RAND_MAX))*5-2.5,-.2,-1.0);
+       food[i].xSize = food[i].ySize = .02;
+
    }
+
 
   //glEnable(GL_COLOR_MATERIAL);
 
@@ -94,12 +104,17 @@ GLint _glScene::drawScene()
      ply->drawPlayer();
     glPopMatrix();
 
+    ply->hungerlower();
+    cout << ply->hunger << endl;
+
     for(int i =0; i<20;i++) {
+        food[i].action = 0;
         if(enms[i].xPos<-2.0)
         {
             enms[i].action =0;
             enms[i].yPos =-0.2;
             enms[i].xMove =0.01;
+
         }
         else if(enms[i].xPos >2.0)
         {
@@ -107,6 +122,7 @@ GLint _glScene::drawScene()
             enms[i].xMove = -0.01;
             enms[i].yPos =-0.2;
         }
+
        enms[i].xPos +=enms[i].xMove;
 
        if(ply->action == 0 && ply->xPos > enms[i].xPos)
@@ -123,8 +139,16 @@ GLint _glScene::drawScene()
            enms[i].action =3;
        }
 
+       if(hit->isCollisionRadius(ply->xPos,ply->yPos,food[i].xPos, food[i].yPos,0.1,0.11)){
+        food[i].action  = 4;
+        ply->hunger = ply->hunger + 1;
+        cout <<"Acorn collision" << endl;
+       }
+
        enms[i].actions();
-    }  // end of for loop
+       food[i].actions();
+    }
+    // end of for loop
 }
 
 GLvoid _glScene::reSizeScene(GLsizei width, GLsizei height)
@@ -145,8 +169,8 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
              kBMs->wParam = wParam;
              kBMs->keyPressed(myModel); //handling Model Movements
-             kBMs->keyEnv(plxSky,0.0005);   //handling Env
-             kBMs->keyEnv(plxFloor,0.005);   //handling Env
+          //   kBMs->keyEnv(plxSky,0.0005);   //handling Env
+           //  kBMs->keyEnv(plxFloor,0.005);   //handling Env
              kBMs->keyPressed(ply);     // handling player movement
              kBMs->keyPressed(snds);
               break;
@@ -155,7 +179,7 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
              kBMs->keyUp(ply);
              break;
 
-        case WM_LBUTTONDOWN:
+       /*case WM_LBUTTONDOWN:
             kBMs->wParam = wParam;
             kBMs->mouseEventDown(myModel,LOWORD(lParam),HIWORD(lParam));
             break;
@@ -179,6 +203,6 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
              break;
         case WM_MOUSEWHEEL:
              kBMs->mouseWheel(myModel,(double)GET_WHEEL_DELTA_WPARAM(wParam));
-            break;
+            break; */
     }
 }

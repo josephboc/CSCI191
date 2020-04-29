@@ -33,6 +33,9 @@ _player::_player()
     yMin=0.5;
     yMax=0.666;
     xMax=1.0;
+    xMove = .1;
+    hunger = 1;
+    hungerrate = .01;
 }
 
 _player::~_player()
@@ -82,6 +85,18 @@ void _player::initPlayer(char *fileName)
     tmr->start();
 }
 
+void _player::hungerlower(){
+if(tmr->getTicks()>60)
+                {
+hunger = hunger - hungerrate;
+if(hunger <= 0){
+cout << "Dead" << endl;
+}
+                tmr->reset();
+                }
+}
+
+
 void _player::actions()
 {
     switch(action)
@@ -95,6 +110,7 @@ void _player::actions()
                 xMax+=1.0/frames;
                 yMin= 0.333;
                 yMax= 0.5;
+                xPos = xPos -xMove;
                 if(xMax>=1){xMin=0.0; xMax=1/frames;}
 
                 tmr->reset();
@@ -110,6 +126,8 @@ void _player::actions()
                 xMax+=1.0/frames;
                 yMin= 0.333;
                 yMax= 0.5;
+                xPos = xPos +xMove;
+
                 if(xMax>=1){xMin=1.0/frames; xMax=0.0/frames;}
 
                 tmr->reset();
@@ -118,12 +136,30 @@ void _player::actions()
             break;
 
         case 3:
+            if(tmr->getTicks()>60)
+                {
              frames= 9.0;
              xMin=8/frames;
              yMin=0.5;
              yMax=0.666;
              xMax=1.0;
+             yPos = yPos + xMove/2;
+             tmr->reset();
+                }
             break;
+        case 2:
+            if(tmr->getTicks()>60)
+                {
+             frames= 9.0;
+             xMin=8/frames;
+             yMin=0.5;
+             yMax=0.666;
+             xMax=1.0;
+             yPos = yPos - xMove/2;
+             tmr->reset();
+                }
+            break;
+
 
     }
 

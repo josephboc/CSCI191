@@ -14,7 +14,12 @@ typedef struct
 
 class _player
 {
+private:
+
+
     public:
+    float hunger;
+    float hungerrate;
         _player();
         virtual ~_player();
 
@@ -31,6 +36,7 @@ class _player
         float xRotation;
         float yRotation;
         float zRotation;
+        float xMove;
 
 
         float runSpeed;
@@ -39,6 +45,7 @@ class _player
         void drawPlayer();
         void placePlayer();
         void initPlayer(char *);
+        void hungerlower();
 
         void actions();   // may have to pass different frame numbers
         int action;          // give values for run jump etc.

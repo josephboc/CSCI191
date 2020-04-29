@@ -12,6 +12,7 @@ _inputs::~_inputs()
     //dtor
 }
 
+/*
 void _inputs::keyEnv(_parallax* plx, float speed)
 {
     switch(wParam){
@@ -33,6 +34,7 @@ void _inputs::keyEnv(_parallax* plx, float speed)
             break;
     }
 }
+*/
 
 void _inputs::keyPressed(_Model* Mdl)
 {
@@ -63,7 +65,6 @@ void _inputs::keyPressed(_player* ply)
     {
         case VK_LEFT:
             ply->action=0;
-
             break;
         case VK_RIGHT:
             ply->action=1;
@@ -94,7 +95,7 @@ void _inputs::keyUp(_player* ply)
      switch(wParam)
     {
         default:
-             ply->action=3;
+             ply->action=-1;
 
             break;
     }
