@@ -8,7 +8,7 @@
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/Lesson11" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="C:/Users/josep/Desktop/csci191/Common/bin" />
+				<Option working_dir="C:/Users/LubPC/Desktop/CSCI191/common/bin" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -35,19 +35,19 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-m32" />
-			<Add directory="C:/Users/josep/Desktop/csci191/Common/include" />
+			<Add directory="../common/include" />
 		</Compiler>
 		<Linker>
 			<Add option="-static-libstdc++" />
 			<Add option="-m32" />
 			<Add library="../common/lib/libSOIL.a" />
-			<Add library="glut32" />
+			<Add library="../common/lib/glut32.lib" />
 			<Add library="opengl32" />
 			<Add library="glu32" />
 			<Add library="winmm" />
 			<Add library="gdi32" />
-			<Add library="../Common/lib/libirrKlang.a" />
-			<Add directory="C:/Users/josep/Desktop/csci191/Common/lib" />
+			<Add library="../common/lib/libirrKlang.a" />
+			<Add directory="C:/Users/Dhanyu/Desktop/Game2020/common/lib" />
 		</Linker>
 		<Unit filename="include/_Model.h" />
 		<Unit filename="include/_checkCollision.h" />
