@@ -8,8 +8,8 @@ _parallax::_parallax()
     //initialize the texture coordinates
     xMax =0.0;
     yMax =0.0;
-    xMin =1.0;
-    yMin =1.0;
+    xMin =0.5;
+    yMin =0.5;
 }
 
 _parallax::~_parallax()

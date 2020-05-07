@@ -9,16 +9,24 @@
 #include <_sound.h>
 #include <iostream>
 #include <_food.h>
+#include <_npc.h>
+#include <_timer.h>
+#include <_texts.h>
 _Model *myModel = new _Model();
 _inputs *kBMs = new _inputs();
-_parallax *plxSky = new _parallax();
-_parallax *plxFloor = new _parallax();
+_parallax *plxForest = new _parallax();
 _player *ply = new _player();
+_texts *txp = new _texts();
+_texts *txp2 = new _texts();
 _checkCollision *hit= new _checkCollision();
 _sound *snds = new _sound();
+_npc *npc = new _npc();
 
 _textureLoader *enmsTex = new _textureLoader();
 _textureLoader *foodTex = new _textureLoader();
+_textureLoader *NPCTex = new _textureLoader();
+_textureLoader *textTex = new _textureLoader();
+_textureLoader *textTex2 = new _textureLoader();
 _enms enms[20];
 _food food[20];
 
@@ -48,31 +56,49 @@ GLint _glScene::initGL()
    myModel->initModel();
    enmsTex->loadTexture("images/smallblackcat.png");
    foodTex->loadTexture("images/frutis.png");
-   plxSky->parallaxInit("images/sky.png");
-   plxFloor->parallaxInit("images/floor.png");
-   ply->initPlayer("images/ply.png");
-   ply->yPos = -0.4;
+   NPCTex->loadTexture("images/npc.png");
+   textTex->loadTexture("images/numbersprites.png");
+   textTex2->loadTexture("images/skills.png");
+   plxForest->parallaxInit("images/forest.jpg");
+   ply->initPlayer("images/ply2.png");
+   ply->yPos = -0.3;
    ply->zPos = -3.0;
+   txp2->inittext(textTex2->tex);
+   txp2->placetext(-1.1,-.65,-2.0);
+
+   txp2->xSize = .08;
+   txp2->ySize = .08;
+   txp->inittext(textTex->tex);
+   txp->placetext(-1.0,-.7,-2.2);
+
+   txp->xSize = .08;
+   txp->ySize = .08;
+   npc->initNPC(NPCTex->tex);
+   npc->xSize = npc->ySize = 0.25;
 
    for(int i=0; i<20;i++)
    {
        enms[i].initEnemy(enmsTex->tex);
-       enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*1-2.5,-0.2,-2.5);
+if(i < 10){ enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*1-2.5,(rand() % 10) / 10.0,-2.5);
+}
+        else{ enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*1-2.5,(rand() % 10) / -10.0,-2.5);}
        enms[i].xMove= (float)(rand()/float(RAND_MAX))/100;
        enms[i].xSize = enms[i].ySize = float(rand()%12)/85.0;
 
        food[i].initFood(foodTex->tex);
-       food[i].placeFood((float)(rand()/float(RAND_MAX))*5-2.5,-.2,-1.0);
+       food[i].placeFood((float)(rand()/float(RAND_MAX))*4-2.5,-.2,-1.0);
        food[i].xSize = food[i].ySize = .02;
 
    }
 
 
+
+
   //glEnable(GL_COLOR_MATERIAL);
 
-   snds->initSounds();
-   snds->playMusic("sounds/karasquare.mp3");
-   snds->tmr->start();
+ //  snds->initSounds();
+ //  snds->playMusic("sounds/karasquare.mp3");
+ //  snds->tmr->start();
    return true;
 }
 
@@ -84,26 +110,30 @@ GLint _glScene::drawScene()
    // glColor3f(1.0,0.0,0.0);              // setting colors
 
     glPushMatrix();
+
      glTranslated(0,0,-4.0);              //placing objects
      glScalef(6.3,6.3,1);
-     plxSky->drawSquare(screenWidth,screenHeight); // draw background
-     plxSky->scroll(false,"right",0.0005);            // Automatic background movement
+     plxForest->drawSquare(screenWidth,screenHeight); // draw background
+     plxForest->scroll(false,"right",0.0005);            // Automatic background movement
 
-     plxFloor->drawSquare(screenWidth,screenHeight); // draw background
-     plxFloor->scroll(false,"right",0.005);            // Automatic background movement
     glPopMatrix();
 
 
-	glPushMatrix();                      // grouping starts
+/*	glPushMatrix();                      // grouping starts
     glTranslated(0,0,-8.0);              //placing objects
-    myModel->drawModel();
+    myModel->drawModel();             //Teapot model
 
-    glPopMatrix();                       // grouping ends
+    glPopMatrix();                       // grouping ends*/
     glPushMatrix();
      ply->actions();
      ply->drawPlayer();
     glPopMatrix();
 
+    glPushMatrix();
+     npc->drawNPC();
+    glPopMatrix();
+    txp->drawtexts();
+    txp2->drawtexts();
     ply->hungerlower();
     cout << ply->hunger << endl;
 
@@ -112,7 +142,7 @@ GLint _glScene::drawScene()
         if(enms[i].xPos<-2.0)
         {
             enms[i].action =0;
-            enms[i].yPos =-0.2;
+       //     enms[i].yPos =-0.2;
             enms[i].xMove =0.01;
 
         }
@@ -120,7 +150,7 @@ GLint _glScene::drawScene()
         {
             enms[i].action =1;
             enms[i].xMove = -0.01;
-            enms[i].yPos =-0.2;
+          //  enms[i].yPos =-0.2;
         }
 
        enms[i].xPos +=enms[i].xMove;
@@ -139,14 +169,44 @@ GLint _glScene::drawScene()
            enms[i].action =3;
        }
 
-       if(hit->isCollisionRadius(ply->xPos,ply->yPos,food[i].xPos, food[i].yPos,0.1,0.11)){
+       if(hit->isCollisionRadius(ply->xPos,ply->yPos,food[i].xPos, food[i].yPos,0.05,0.059)){
         food[i].action  = 4;
         ply->hunger = ply->hunger + 1;
+        ply->skillpoints = ply->skillpoints + 1.0;
+       if(ply->skillpoints == 0.0){
+        txp->action = 0;
+       }
+       else if(ply->skillpoints == 1.0){
+        txp->action = 1;
+       }
+       else if(ply->skillpoints == 2.0){
+        txp->action = 2;
+       }
+        else if(ply->skillpoints == 3.0){
+        txp->action = 3;
+       }
+        else if(ply->skillpoints == 4.0){
+        txp->action = 4;
+       }
+        else if(ply->skillpoints == 5.0){
+        txp->action = 5;
+       }
+
+   //    cout << ply->skillpoints << " ";
+       txp->actions();
         cout <<"Acorn collision" << endl;
        }
+//cout << "Skill points:" << ply->skillpoints;
 
        enms[i].actions();
        food[i].actions();
+
+
+
+//cout << food[i].xPos << " " << ply->xPos;
+
+
+
     }
     // end of for loop
 }
@@ -169,9 +229,8 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
              kBMs->wParam = wParam;
              kBMs->keyPressed(myModel); //handling Model Movements
-          //   kBMs->keyEnv(plxSky,0.0005);   //handling Env
-           //  kBMs->keyEnv(plxFloor,0.005);   //handling Env
              kBMs->keyPressed(ply);     // handling player movement
+             kBMs->keyEnv(plxForest, 0.01);   //handling environment
              kBMs->keyPressed(snds);
 
               break;
@@ -180,7 +239,7 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
              kBMs->keyUp(ply);
              break;
 
-       /*case WM_LBUTTONDOWN:
+       case WM_LBUTTONDOWN:
             kBMs->wParam = wParam;
             kBMs->mouseEventDown(myModel,LOWORD(lParam),HIWORD(lParam));
             break;
@@ -204,6 +263,6 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
              break;
         case WM_MOUSEWHEEL:
              kBMs->mouseWheel(myModel,(double)GET_WHEEL_DELTA_WPARAM(wParam));
-            break; */
+            break;
     }
 }

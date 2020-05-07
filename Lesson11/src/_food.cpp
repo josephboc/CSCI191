@@ -1,6 +1,8 @@
 #include "_food.h"
 #include <_player.h>
-
+#include <string.h>
+#include "_glScene.h"
+#include <_glLight.h>
 _food::_food()
 {
     xPos= yPos =0.0;
@@ -18,6 +20,9 @@ _food::_food()
     action =0;
 
 }
+
+
+
 void _food::drawFood()
 {
     glBindTexture(GL_TEXTURE_2D,FoodTex);

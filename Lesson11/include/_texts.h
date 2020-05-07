@@ -1,6 +1,5 @@
-#ifndef _FOOD_H
-#define _FOOD_H
-
+#ifndef _TEXTS_H
+#define _TEXTS_H
 #include <GL/gl.h>
 #include <_textureLoader.h>
 #include <_timer.h>
@@ -8,21 +7,21 @@
 #include <stdlib.h>
 
 
-class _food
+class _texts
 {
     public:
-        _food();
-        virtual ~_food();
-        void drawFood();                  //Draw objects
-        void placeFood(float,float,float);//Place Enemy
-        void initFood(GLuint);
+        _texts();
+        virtual ~_texts();
+        void drawtexts();                  //Draw objects
+        void placetext(float,float,float);//Place Enemy
+        void inittext(GLuint);
         void actions();
                    //Movements and actions
         void output(int x, int y, float r, float g, float b, int font, char *string);
 
-        bool isFoodAlive;                  //Status of the Enemy
-        GLuint FoodTex;                   //handle Texture
-
+                //Status of the Enemy
+        GLuint textTex;                   //handle Texture
+        GLuint textTex2;
         float xPos, yPos, zPos;            // Placements
         float xSize,ySize;                 // Scaling Factor
 
@@ -41,6 +40,9 @@ class _food
     protected:
 
     private:
+    protected:
+
+    private:
 };
 
-#endif // _FOOD_H
+#endif // _TEXTS_H
