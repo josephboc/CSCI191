@@ -126,9 +126,8 @@ void _food::actions()
     case 4:
          if(TE->getTicks()>60){
 
-            xMin =0.0/frames;
-            xMax =1.0/frames;
-            yMin =0.0;
+            xMin =1.0;
+            xMax =1.0;
             yMax =1.0;
             xPos = 8.0;
             yPos = 8.0;

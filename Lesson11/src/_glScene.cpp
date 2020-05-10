@@ -86,7 +86,7 @@ if(i < 10){ enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*1-2.5,(rand() % 1
        enms[i].xSize = enms[i].ySize = float(rand()%12)/85.0;
 
        food[i].initFood(foodTex->tex);
-       food[i].placeFood((float)(rand()/float(RAND_MAX))*4-2.5,-.2,-1.0);
+       food[i].placeFood((float)(rand()/float(RAND_MAX))*4-2.5,-.2,-2.0);
        food[i].xSize = food[i].ySize = .02;
 
    }
@@ -135,7 +135,7 @@ GLint _glScene::drawScene()
     txp->drawtexts();
     txp2->drawtexts();
     ply->hungerlower();
-    cout << ply->hunger << endl;
+    cout << ply->skillpoints << endl;
 
     for(int i =0; i<20;i++) {
         food[i].action = 0;
@@ -157,7 +157,7 @@ GLint _glScene::drawScene()
 
        if(ply->action == 0 && ply->xPos > enms[i].xPos)
        {
-           if(hit->isCollisionRadius(ply->xPos,ply->yPos,enms[i].xPos, enms[i].yPos,0.1,0.11))
+           if(hit->isCollisionRadius(ply->xPos,ply->yPos,enms[i].xPos, enms[i].yPos,0.1,0.11)&&ply->strength > 1)
 
            if(fabs(enms[i].xPos - ply->xPos)<0.1)
            enms[i].action =2;
@@ -165,41 +165,65 @@ GLint _glScene::drawScene()
 
        if(ply->action == 1 && ply->xPos < enms[i].xPos)
        {
-           if(hit->isCollisionRadius(ply->xPos,ply->yPos,enms[i].xPos, enms[i].yPos,0.1,0.11))
+           if(hit->isCollisionRadius(ply->xPos,ply->yPos,enms[i].xPos, enms[i].yPos,0.1,0.11)&& ply->strength > 1)
            enms[i].action =3;
        }
 
-       if(hit->isCollisionRadius(ply->xPos,ply->yPos,food[i].xPos, food[i].yPos,0.05,0.059)){
+       if(hit->isCollisionRadius(ply->xPos,ply->yPos+.05,food[i].xPos, food[i].yPos,0.09,0.059)&& (ply->action==4 || ply->action ==5)){
+
+
         food[i].action  = 4;
-        ply->hunger = ply->hunger + 1;
-        ply->skillpoints = ply->skillpoints + 1.0;
+        ply->hunger = ply->hunger + .5;
+        ply->skillpoints = ply->skillpoints + .1;
        if(ply->skillpoints == 0.0){
         txp->action = 0;
        }
-       else if(ply->skillpoints == 1.0){
+       else if(ply->skillpoints > 1.0 && ply->skillpoints< 2.0){
         txp->action = 1;
        }
-       else if(ply->skillpoints == 2.0){
+       else if(ply->skillpoints > 2.0 && ply->skillpoints< 3.0){
         txp->action = 2;
        }
-        else if(ply->skillpoints == 3.0){
+        else if(ply->skillpoints > 3.0 && ply->skillpoints< 4.0){
         txp->action = 3;
        }
-        else if(ply->skillpoints == 4.0){
+        else if(ply->skillpoints > 4.0 && ply->skillpoints< 5.0){
         txp->action = 4;
        }
-        else if(ply->skillpoints == 5.0){
+        else if(ply->skillpoints > 5.0){
         txp->action = 5;
        }
 
    //    cout << ply->skillpoints << " ";
-       txp->actions();
+
         cout <<"Acorn collision" << endl;
+       }
+       if((ply->action == 6|| ply->action == 7 || ply->action == 8 || ply->action == 9) && ply->skillpoints > 1){
+        ply->skillpoints = ply->skillpoints - 1;
+               if(ply->skillpoints < 1.0){
+        txp->action = 0;
+       }
+       else if(ply->skillpoints > 1.0 && ply->skillpoints< 2.0){
+        txp->action = 1;
+       }
+       else if(ply->skillpoints > 2.0 && ply->skillpoints< 3.0){
+        txp->action = 2;
+       }
+        else if(ply->skillpoints > 3.0 && ply->skillpoints< 4.0){
+        txp->action = 3;
+       }
+        else if(ply->skillpoints > 4.0 && ply->skillpoints< 5.0){
+        txp->action = 4;
+       }
+        else if(ply->skillpoints > 5.0){
+        txp->action = 5;
+       }
        }
 //cout << "Skill points:" << ply->skillpoints;
 
        enms[i].actions();
        food[i].actions();
+       txp->actions();
 
 
 
