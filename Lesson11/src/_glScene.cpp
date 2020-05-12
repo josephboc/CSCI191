@@ -1,42 +1,21 @@
 #include "_glScene.h"
 #include <_glLight.h>
-#include <_Model.h>
-#include <_inputs.h>
-#include <_parallax.h>
-#include <_player.h>
-#include <_enms.h>
-#include <_checkCollision.h>
-#include <_sound.h>
-#include <iostream>
-#include <_food.h>
-#include<_timer.h>
 
-_Model *myModel = new _Model();
-_inputs *kBMs = new _inputs();
-_parallax *Season = new _parallax();  //Season background parallax
-_player *ply = new _player();
-_checkCollision *hit= new _checkCollision();
-_sound *snds = new _sound();
-
-_timer *SeasonTimer = new _timer();
-
-_textureLoader *enmsTex = new _textureLoader();
-_textureLoader *foodTex = new _textureLoader();
-
-_enms enms[20];
-_food food[20];
 
 _glScene::_glScene()
 {
     //ctor
     screenWidth = GetSystemMetrics(SM_CXSCREEN);
     screenHeight = GetSystemMetrics(SM_CYSCREEN);
+    currentSeason = 0; // 0-summer, 1-fall, 2-winter, 3-spring
+    doneLoading = false;
 }
 
 _glScene::~_glScene()
 {
     //dtor
 }
+
 GLint _glScene::initGL()
 {
 
@@ -52,31 +31,6 @@ GLint _glScene::initGL()
    myModel->initModel();
    enmsTex->loadTexture("images/mon.png");
    foodTex->loadTexture("images/frutis.png");
-   if(Season->currentSeason == 0){
-        Season->parallaxInit("images/Summer.jpg");
-   }
-   else if(Season->currentSeason == 1){
-        Season->parallaxInit("images/Summer.jpg");
-        Season->xMax =0.0;
-        Season->yMax =0.0;
-        Season->xMin =0.5;
-        Season->yMin =0.5;
-   }
-   else if(Season->currentSeason == 2){
-        Season->parallaxInit("images/Fall.png");
-        Season->xMax =0.0;
-        Season->yMax =0.0;
-        Season->xMin =0.3;
-        Season->yMin =0.3;
-   }
-   else if(Season->currentSeason == 3){
-        Season->parallaxInit("images/Winter.png");
-        Season->xMax =0.0;
-        Season->yMax =0.0;
-        Season->xMin =1.0;
-        Season->yMin =1.0;
-   }
-   //Winter->parallaxInit("images/Winter.png");
    ply->initPlayer("images/ply.png");
    ply->yPos = -0.3;
    ply->zPos = -3.0;
@@ -94,12 +48,33 @@ GLint _glScene::initGL()
 
    }
 
-
   //glEnable(GL_COLOR_MATERIAL);
 
    snds->initSounds();
+   snds->engine->stopAllSounds();  //Stop sound
    snds->playMusic("sounds/mp.mp3");
    snds->tmr->start();
+
+   if(currentSeason == 0){ //Load summer image
+    Season->parallaxInit("images/0.png");
+    doneLoading = true;
+   }
+
+   if(currentSeason == 1){  //Load fall image
+    Season->parallaxInit("images/1.png");
+    doneLoading = true;
+   }
+
+   if(currentSeason == 2){  //Load winter image
+    Season->parallaxInit("images/2.png");
+   doneLoading = true;
+   }
+
+   if(currentSeason == 3){  //Load spring image
+    Season->parallaxInit("images/3.png");
+    doneLoading = true;
+   }
+
    return true;
 }
 
@@ -116,11 +91,6 @@ GLint _glScene::drawScene()
      glScalef(6.3,6.3,1);
      Season->drawSquare(screenWidth,screenHeight); // draw background
      Season->scroll(false,"right",0.0005);            // Automatic background movement
-     if(SeasonTimer->getTicks()>10){
-        Season->currentSeason++;
-        if(Season->currentSeason>3){Season->currentSeason=0;}
-        SeasonTimer->reset();
-     }
 
     glPopMatrix();
 

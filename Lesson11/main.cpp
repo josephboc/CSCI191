@@ -221,13 +221,6 @@ BOOL CreateGLWindow(char* title, int width, int height, int bits, bool fullscree
 	SetFocus(hWnd);									// Sets Keyboard Focus To The Window
 	Scene->reSizeScene(width, height);			// Set Up Our Perspective GL Screen
 
-	if (!Scene->initGL())							// Initialize Our Newly Created GL Window
-	{
-		KillGLWindow();								// Reset The Display
-		MessageBox(NULL,"Initialization Failed.","ERROR",MB_OK|MB_ICONEXCLAMATION);
-		return FALSE;								// Return FALSE
-	}
-
 	return TRUE;									// Success
 }
 
@@ -342,8 +335,46 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 		return 0;									// Quit If Window Was Not Created
 	}
 
+    Scene->SeasonTimer->start();
+
 	while(!done)									// Loop That Runs While done=FALSE
 	{
+        if(Scene->SeasonTimer->getTicks()>6000){Scene->currentSeason++; Scene->SeasonTimer->reset(); Scene->doneLoading = false;} //Timer and timer reset and reset doneLoading to false
+	    if(!Scene->doneLoading && Scene->currentSeason == 0){ //Summer season
+                if (!Scene->initGL())							// Initialize Our Newly Created GL Window
+                    {
+                        KillGLWindow();								// Reset The Display
+                        MessageBox(NULL,"Initialization Failed.","ERROR",MB_OK|MB_ICONEXCLAMATION);
+                        return FALSE;								// Return FALSE
+                    }
+	    }
+        if(!Scene->doneLoading && Scene->currentSeason == 1){  //Fall season
+                if (!Scene->initGL())							// Initialize Our Newly Created GL Window
+                    {
+                        KillGLWindow();								// Reset The Display
+                        MessageBox(NULL,"Initialization Failed.","ERROR",MB_OK|MB_ICONEXCLAMATION);
+                        return FALSE;								// Return FALSE
+                    }
+	    }
+	    if(!Scene->doneLoading && Scene->currentSeason == 2){  //Winter season
+                if (!Scene->initGL())							// Initialize Our Newly Created GL Window
+                    {
+                        KillGLWindow();								// Reset The Display
+                        MessageBox(NULL,"Initialization Failed.","ERROR",MB_OK|MB_ICONEXCLAMATION);
+                        return FALSE;								// Return FALSE
+                    }
+	    }
+	    if(!Scene->doneLoading && Scene->currentSeason == 3){  //Spring season
+                if (!Scene->initGL())							// Initialize Our Newly Created GL Window
+                    {
+                        KillGLWindow();								// Reset The Display
+                        MessageBox(NULL,"Initialization Failed.","ERROR",MB_OK|MB_ICONEXCLAMATION);
+                        return FALSE;								// Return FALSE
+                    }
+	    }
+
+	    if(Scene->currentSeason>=4){Scene->currentSeason = 0;} //Fix this
+
 		if (PeekMessage(&msg,NULL,0,0,PM_REMOVE))	// Is There A Message Waiting?
 		{
 			if (msg.message==WM_QUIT)				// Have We Received A Quit Message?
@@ -358,6 +389,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 		}
 		else										// If There Are No Messages
 		{
+
 			// Draw The Scene.  Watch For ESC Key And Quit Messages From DrawGLScene()
 			if (!active  || keys[VK_ESCAPE])	// Active?  Was There A Quit Received?
 			{
@@ -365,6 +397,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 			}
 			else									// Not Time To Quit, Update Screen
 			{
+			    if(Scene->doneLoading)
 			    Scene->drawScene();
 				SwapBuffers(hDC);					// Swap Buffers (Double Buffering)
 			}
@@ -380,6 +413,11 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 					return 0;						// Quit If Window Was Not Created
 				}
 			}
+			if(keys[VK_TAB])
+            {
+                Scene->currentSeason = 2;
+                Scene->doneLoading = false;
+            }
 		}
 	}
 

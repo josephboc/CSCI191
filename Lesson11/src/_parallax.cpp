@@ -8,9 +8,9 @@ _parallax::_parallax()
     //initialize the texture coordinates
     xMax =0.0;
     yMax =0.0;
-    xMin =0.5;
-    yMin =0.5;
-    currentSeason = 2;  //0 for spring, 1 for summer, 2 for fall, 3 for winter
+    xMin =1.0;
+    yMin =1.0;
+
 }
 
 _parallax::~_parallax()
