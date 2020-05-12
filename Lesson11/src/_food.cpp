@@ -1,6 +1,8 @@
 #include "_food.h"
 #include <_player.h>
-
+#include <string.h>
+#include "_glScene.h"
+#include <_glLight.h>
 _food::_food()
 {
     xPos= yPos =0.0;
@@ -18,6 +20,9 @@ _food::_food()
     action =0;
 
 }
+
+
+
 void _food::drawFood()
 {
     glBindTexture(GL_TEXTURE_2D,FoodTex);
@@ -121,9 +126,8 @@ void _food::actions()
     case 4:
          if(TE->getTicks()>60){
 
-            xMin =0.0/frames;
-            xMax =1.0/frames;
-            yMin =0.0;
+            xMin =1.0;
+            xMax =1.0;
             yMax =1.0;
             xPos = 8.0;
             yPos = 8.0;

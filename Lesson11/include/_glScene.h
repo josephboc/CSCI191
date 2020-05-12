@@ -16,7 +16,6 @@ class _glScene
         GLint initGL();           // initialize OpenGL
         GLint drawScene();        // Renderer
         GLvoid reSizeScene(GLsizei, GLsizei); // screen size changes
-
         int winMsg(HWND, UINT, WPARAM, LPARAM);	// Callback of inputs
 
         //WPARAM wParm;

@@ -32,6 +32,7 @@ private:
         float xPos;   //x position of the Player
         float yPos;   //y position of the Player
         float zPos;   //z position of the Player
+        float skillpoints;
 
         float xSize;
         float ySize;
