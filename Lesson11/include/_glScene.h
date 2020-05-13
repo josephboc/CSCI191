@@ -18,8 +18,8 @@ class _glScene
         GLint drawScene();        // Renderer
         GLvoid reSizeScene(GLsizei, GLsizei); // screen size changes
         MenuStates sendScreen();
-
-
+  
+  
         int winMsg(HWND, UINT, WPARAM, LPARAM);	// Callback of inputs
 
         //WPARAM wParm;

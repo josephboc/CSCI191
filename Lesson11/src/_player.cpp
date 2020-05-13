@@ -1,3 +1,4 @@
+
 #include "_player.h"
 
 _textureLoader *T= new _textureLoader();
@@ -25,6 +26,7 @@ _player::_player()
     xRotation=0.0;
     yRotation=0.0;
     zRotation=0.0;
+    skillpoints = 0.0;
 
     action =-1;
 
@@ -161,6 +163,118 @@ void _player::actions()
              yPos = yPos - xMove/2;
              tmr->reset();
                 }
+            break;
+        
+        case 4:
+
+                if(tmr->getTicks()>60)
+                {
+                    frames= 8.0;
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.125;
+                yMax= 0.25;
+                xPos = xPos -xMove/2;
+                if(xMax>=1){xMin=0.0; xMax=1/frames;}
+
+             tmr->reset();
+                }
+                break;
+        case 5:
+               frames= 8.0;
+                if(tmr->getTicks()>60)
+                {
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.0;
+                yMax= 0.125;
+                xPos = xPos +xMove/2;
+
+                if(xMax>=1){xMin=0.0; xMax=1.0/frames;}
+
+                tmr->reset();
+                }
+                break;
+        case 6:
+               frames= 8.0;
+                if(tmr->getTicks()>20)
+                {
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.0;
+                yMax= 0.125;
+                //xPos = xPos +xMove;
+
+                if(xMax>=1){xMin=0.0; xMax=1.0/frames;}
+
+                tmr->reset();
+                }
+                if(skillpoints > 1){
+                xMove = xMove + .1;
+                //skillpoints = skillpoints - 1;
+                }
+
+            break;
+        case 7:
+               frames= 8.0;
+                if(tmr->getTicks()>20)
+                {
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.0;
+                yMax= 0.125;
+                //xPos = xPos +xMove;
+
+                if(xMax>=1){xMin=0.0; xMax=1.0/frames;}
+
+                tmr->reset();
+                }
+                if(skillpoints > 1){
+                strength = strength + .1;
+                //skillpoints = skillpoints - 1;
+                }
+
+            break;
+        case 8:
+               frames= 8.0;
+                if(tmr->getTicks()>20)
+                {
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.0;
+                yMax= 0.125;
+                //xPos = xPos +xMove;
+
+                if(xMax>=1){xMin=0.0; xMax=1.0/frames;}
+
+                tmr->reset();
+                }
+                if(skillpoints > 1){
+                cuteness = cuteness + .1;
+                //skillpoints = skillpoints - 1;
+                }
+
+            break;
+
+        case 9:
+               frames= 8.0;
+                if(tmr->getTicks()>20)
+                {
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.0;
+                yMax= 0.125;
+                //xPos = xPos +xMove;
+
+                if(xMax>=1){xMin=0.0; xMax=1.0/frames;}
+
+                tmr->reset();
+                }
+                if(skillpoints > 1){
+                hungerrate = hungerrate - .00001;
+                //skillpoints = skillpoints - 1;
+                }
+
             break;
 
 

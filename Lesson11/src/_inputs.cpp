@@ -101,6 +101,24 @@ void _inputs::keyPressed(_player* ply)
         case VK_UP:
             ply->action=3;
             break;
+        case VK_NUMPAD1:
+            ply->action=4;
+            break;
+        case VK_NUMPAD2:
+            ply->action=5;
+            break;
+        case VK_NUMPAD3:
+            ply->action=6;
+            break;
+        case VK_NUMPAD4:
+            ply->action=7;
+            break;
+        case VK_NUMPAD5:
+            ply->action=8;
+            break;
+        case VK_NUMPAD6:
+            ply->action=9;
+            break;
     }
 }
 
