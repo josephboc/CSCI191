@@ -9,6 +9,7 @@ _glScene::_glScene()
     screenHeight = GetSystemMetrics(SM_CYSCREEN);
     currentSeason = 0; // 0-summer, 1-fall, 2-winter, 3-spring
     doneLoading = false;
+    secondEffectOn = false;
 }
 
 _glScene::~_glScene()
@@ -56,22 +57,60 @@ GLint _glScene::initGL()
    snds->tmr->start();
 
    if(currentSeason == 0){ //Load summer image
-    Season->parallaxInit("images/0.png");
+    Season->parallaxInit("images/0.png"); //correct parallax for summer
+    SeasonEffect->xMax = 0.0;
+    SeasonEffect->yMax = 0.0;
+    SeasonEffect->xMin = 1.0;
+    SeasonEffect->yMin = 1.0;
+    SeasonEffect->parallaxInit("images/sunray.png");  //Load season effect 1
+    if(currentSeason%2 == 1){ //Load season effect 2
+        SeasonEffect2->parallaxInit("images/sunray3.png");
+    }
+    else{
+        SeasonEffect2->parallaxInit("images/sunray2.png");
+    }
     doneLoading = true;
    }
 
    if(currentSeason == 1){  //Load fall image
     Season->parallaxInit("images/1.png");
+    SeasonEffect->parallaxInit("images/leavefalling.png"); //Load season effect 1
+    if(secondEffectOn){ //Load season effect 2
+        SeasonEffect2->parallaxInit("images/sunray3.png");
+        secondEffectOn = !secondEffectOn;
+    }
+    else{
+        SeasonEffect2->parallaxInit("images/sunray2.png");
+        secondEffectOn = !secondEffectOn;
+    }
     doneLoading = true;
    }
 
    if(currentSeason == 2){  //Load winter image
     Season->parallaxInit("images/2.png");
+    SeasonEffect->parallaxInit("images/snowing.png"); //Load season effect 1
+    if(secondEffectOn){ //Load season effect 2
+        SeasonEffect2->parallaxInit("images/sunray3.png");
+        secondEffectOn = !secondEffectOn;
+    }
+    else{
+        SeasonEffect2->parallaxInit("images/sunray2.png");
+        secondEffectOn = !secondEffectOn;
+    }
    doneLoading = true;
    }
 
    if(currentSeason == 3){  //Load spring image
     Season->parallaxInit("images/3.png");
+    SeasonEffect->parallaxInit("images/raining.png"); //Load season effect 1
+    if(secondEffectOn){ //Load season effect 2
+        SeasonEffect2->parallaxInit("images/sunray3.png");
+        secondEffectOn = !secondEffectOn;
+    }
+    else{
+        SeasonEffect2->parallaxInit("images/sunray2.png");
+        secondEffectOn = !secondEffectOn;
+    }
     doneLoading = true;
    }
 
@@ -91,6 +130,16 @@ GLint _glScene::drawScene()
      glScalef(6.3,6.3,1);
      Season->drawSquare(screenWidth,screenHeight); // draw background
      Season->scroll(false,"right",0.0005);            // Automatic background movement
+     if(currentSeason == 0){
+        SeasonEffect->drawSquare(screenWidth,screenHeight);
+        SeasonEffect->scroll(false,"left", 0.0);
+     }
+     else{
+        SeasonEffect->drawSquare(screenWidth,screenHeight);
+        SeasonEffect->scroll(true,"up", 0.003);
+     }
+     SeasonEffect2->drawSquare(screenWidth,screenHeight);
+     SeasonEffect2->scroll(false, "right", 0.0);
 
     glPopMatrix();
 

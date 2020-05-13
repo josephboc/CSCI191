@@ -430,7 +430,7 @@
 	<iostream>
 	<windows.h>
 
-1589310229 c:\users\lubpc\desktop\csci191\lesson11\include\_glscene.h
+1589334161 c:\users\lubpc\desktop\csci191\lesson11\include\_glscene.h
 	<windows.h>
 	<GL/glut.h>
 	<iostream>
@@ -477,7 +477,7 @@
 1588174080 c:\users\lubpc\desktop\csci191\lesson11\include\_gllight.h
 	<_glScene.h>
 
-1589314290 source:c:\users\lubpc\desktop\csci191\lesson11\src\_glscene.cpp
+1589334697 source:c:\users\lubpc\desktop\csci191\lesson11\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 

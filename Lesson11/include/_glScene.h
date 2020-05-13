@@ -32,6 +32,8 @@ class _glScene
         _Model *myModel = new _Model();
         _inputs *kBMs = new _inputs();
         _parallax *Season = new _parallax();  //Season background parallax
+        _parallax *SeasonEffect = new _parallax();  //Season effect parallax
+        _parallax *SeasonEffect2 = new _parallax();  //Season effect parallax
         _player *ply = new _player();
         _checkCollision *hit= new _checkCollision();
         _sound *snds = new _sound();
@@ -39,6 +41,7 @@ class _glScene
         _timer *SeasonTimer = new _timer();
         int currentSeason;
         bool doneLoading;
+        bool secondEffectOn;
 
         _textureLoader *enmsTex = new _textureLoader();
         _textureLoader *foodTex = new _textureLoader();
