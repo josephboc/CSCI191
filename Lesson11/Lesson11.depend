@@ -567,7 +567,7 @@
 	<GL/glut.h>
 	<iostream>
 
-1589255774 d:\downloads\csci191-phillip\csci191-jose\lesson11\include\_parallax.h
+1589406462 d:\downloads\csci191-phillip\csci191-jose\lesson11\include\_parallax.h
 	<iostream>
 	<string>
 	<gl/gl.h>
@@ -694,7 +694,7 @@
 	<_checkCollision.h>
 	<stdlib.h>
 
-1589321324 source:d:\downloads\csci191-phillip\csci191-jose\lesson11\src\_parallax.cpp
+1589406492 source:d:\downloads\csci191-phillip\csci191-jose\lesson11\src\_parallax.cpp
 	"_parallax.h"
 
 1588207516 source:d:\downloads\csci191-phillip\csci191-jose\lesson11\src\_player.cpp
@@ -710,7 +710,7 @@
 1588207516 source:d:\downloads\csci191-phillip\csci191-jose\lesson11\src\_timer.cpp
 	"_timer.h"
 
-1589321921 source:d:\downloads\csci191-phillip\csci191-jose\lesson11\src\_glscene.cpp
+1589406687 source:d:\downloads\csci191-phillip\csci191-jose\lesson11\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<_Model.h>

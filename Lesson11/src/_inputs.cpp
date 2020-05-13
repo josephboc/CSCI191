@@ -66,6 +66,15 @@ void _inputs::keyPressed(_Model* Mdl, _MenuManager *menuManager)
                 menuManager->currState = GAME;
             }
 
+            break;
+
+        case VK_DELETE:
+            if(menuManager->currState == MENU){
+                menuManager->currState == LANDING;
+            }
+
+            break;
+
         //tab will start our game
         /*
         case VK_TAB:

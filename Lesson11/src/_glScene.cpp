@@ -19,8 +19,8 @@ _player *ply = new _player();
 _checkCollision *hit= new _checkCollision();
 _sound *snds = new _sound();
 _npc *npc = new _npc();
-_parallax *cred = new _parallax();
-_parallax *menu = new _parallax();
+_parallax *cred = new _parallax(1);
+_parallax *menu = new _parallax(1);
 
 
 //menu stuffs
@@ -59,6 +59,8 @@ GLint _glScene::initGL()
    glDepthFunc(GL_LEQUAL);
 
 
+
+
    _glLight Light(GL_LIGHT0);
 
 
@@ -78,7 +80,7 @@ GLint _glScene::initGL()
    npc->xSize = npc->ySize = 0.25;
 
     //menu state images
-    cred->parallaxInit("images/title.jpg");
+    cred->parallaxInit("images/group_credits_x_w.png");
     menu->parallaxInit("images/menu_screen.png");
 
 
@@ -123,9 +125,11 @@ GLint _glScene::drawScene()
         //starts as first thing when game loads, have no idea how the hell
         //it's just drawing an frigging square.
         glPushMatrix();
-        //glScaled(.3, 1, 1.0);
-        glScalef(6.3,6.3,1.0); //trying something different
-        cred->drawSquare(screenWidth,screenHeight);
+        glScaled(0.33, 1.0, 1.0);
+        //glTranslated(0,0,-4.0);              //placing objects
+        //glScalef(6.3 ,6.3 , 1.0);
+        cred->drawBacking(screenWidth,screenHeight);
+        //cred->scroll(false,"right",0.0005);
         glPopMatrix();
         break;
 
@@ -133,7 +137,7 @@ GLint _glScene::drawScene()
         glPushMatrix();
         glScaled(.33, 1, 1.0);
         //glScalef(6.3,6.3,1);//trying something differnt
-        menu->drawSquare(screenWidth,screenHeight);
+        menu->drawBacking(screenWidth,screenHeight);
         glPopMatrix();
         break;
 
@@ -251,6 +255,7 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
              kBMs->keyPressed(myModel, menuManager); //handling Model Movements
              kBMs->keyPressed(ply);     // handling player movement
              kBMs->keyEnv(plxForest, 0.01);   //handling environment
+             //kBMs->keyEnv(cred, 0.01);
              kBMs->keyPressed(snds);
 
               break;
