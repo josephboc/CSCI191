@@ -28,11 +28,11 @@ _player::_player()
 
     action =-1;
 
-    frames =9;
-    xMin=8/frames;
-    yMin=0.5;
-    yMax=0.666;
-    xMax=1.0;
+    frames =8;
+    xMin=0/frames;
+    yMin=0.0;
+    yMax=0.125;
+    xMax=1.0/frames;
     xMove = .1;
     hunger = 1;
     hungerrate = .01;
@@ -106,13 +106,13 @@ void _player::actions()
     {
 
         case 0:
-                frames= 9.0;
+                frames= 8.0;
                 if(tmr->getTicks()>60)
                 {
                 xMin+=1.0/frames;
                 xMax+=1.0/frames;
-                yMin= 0.333;
-                yMax= 0.5;
+                yMin= 0.125;
+                yMax= 0.25;
                 xPos = xPos -xMove;
                 if(xMax>=1){xMin=0.0; xMax=1/frames;}
 
@@ -122,16 +122,16 @@ void _player::actions()
          break;
 
         case 1:
-               frames= 9.0;
+               frames= 8.0;
                 if(tmr->getTicks()>60)
                 {
                 xMin+=1.0/frames;
                 xMax+=1.0/frames;
-                yMin= 0.333;
-                yMax= 0.5;
+                yMin= 0.0;
+                yMax= 0.125;
                 xPos = xPos +xMove;
 
-                if(xMax>=1){xMin=1.0/frames; xMax=0.0/frames;}
+                if(xMax>=1){xMin=0.0; xMax=1.0/frames;}
 
                 tmr->reset();
                 }

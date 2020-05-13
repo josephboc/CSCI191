@@ -6,6 +6,7 @@
 #include<_parallax.h>
 #include<_player.h>
 #include<_sound.h>
+#include <_MenuManager.h>
 
 
 
@@ -15,7 +16,7 @@ class _inputs
         _inputs();
         virtual ~_inputs();
 
-        void keyPressed(_Model *);   // model handling
+        void keyPressed(_Model *, _MenuManager*);   // state handling
         void keyPressed(_player *);   // model handling
         void keyPressed(_sound *);
 

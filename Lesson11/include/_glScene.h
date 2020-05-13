@@ -3,6 +3,7 @@
 
 #include <windows.h>
 #include<GL/glut.h>
+#include <_MenuManager.h>
 
 #include<iostream>
 
@@ -16,6 +17,8 @@ class _glScene
         GLint initGL();           // initialize OpenGL
         GLint drawScene();        // Renderer
         GLvoid reSizeScene(GLsizei, GLsizei); // screen size changes
+        MenuStates sendScreen();
+
 
         int winMsg(HWND, UINT, WPARAM, LPARAM);	// Callback of inputs
 

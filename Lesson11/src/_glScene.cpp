@@ -10,6 +10,8 @@
 #include <iostream>
 #include <_food.h>
 #include <_npc.h>
+#include <_MenuManager.h>
+
 _Model *myModel = new _Model();
 _inputs *kBMs = new _inputs();
 _parallax *plxForest = new _parallax();
@@ -17,6 +19,12 @@ _player *ply = new _player();
 _checkCollision *hit= new _checkCollision();
 _sound *snds = new _sound();
 _npc *npc = new _npc();
+_parallax *cred = new _parallax();
+_parallax *menu = new _parallax();
+
+
+//menu stuffs
+_MenuManager *menuManager = new _MenuManager;
 
 _textureLoader *enmsTex = new _textureLoader();
 _textureLoader *foodTex = new _textureLoader();
@@ -35,11 +43,17 @@ _glScene::~_glScene()
 {
     //dtor
 }
+
+//Function for the main so that the game exits when escaped key clicked on the correct MenuStates
+MenuStates _glScene::sendScreen(){
+    return menuManager->currState;
+}
+
 GLint _glScene::initGL()
 {
 
    glShadeModel(GL_SMOOTH);    // to make graphics nicer
-   glClearColor(1.0f,0.5f,0.0f,1.0f); // background color R,G,B,Alpha
+   glClearColor(1.0f,0.0f,0.0f,1.0f); // background color R,G,B,Alpha
    glClearDepth(1.0f);          // Depth Clearance
    glEnable(GL_DEPTH_TEST);
    glDepthFunc(GL_LEQUAL);
@@ -47,16 +61,27 @@ GLint _glScene::initGL()
 
    _glLight Light(GL_LIGHT0);
 
+
+
+
+
+   //main game images
    myModel->initModel();
    enmsTex->loadTexture("images/smallblackcat.png");
    foodTex->loadTexture("images/frutis.png");
    NPCTex->loadTexture("images/npc.png");
    plxForest->parallaxInit("images/forest.jpg");
-   ply->initPlayer("images/ply.png");
+   ply->initPlayer("images/ply2.png");
    ply->yPos = -0.3;
    ply->zPos = -3.0;
    npc->initNPC(NPCTex->tex);
    npc->xSize = npc->ySize = 0.25;
+
+    //menu state images
+    cred->parallaxInit("images/title.jpg");
+    menu->parallaxInit("images/menu_screen.png");
+
+
 
    for(int i=0; i<20;i++)
    {
@@ -82,82 +107,128 @@ GLint _glScene::initGL()
    return true;
 }
 
+
+
 GLint _glScene::drawScene()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
 	glLoadIdentity();
 
+
+
    // glColor3f(1.0,0.0,0.0);              // setting colors
+    menuManager->currState;
+    switch(menuManager->currState){
+    case LANDING:
+        //starts as first thing when game loads, have no idea how the hell
+        //it's just drawing an frigging square.
+        glPushMatrix();
+        //glScaled(.3, 1, 1.0);
+        glScalef(6.3,6.3,1.0); //trying something different
+        cred->drawSquare(screenWidth,screenHeight);
+        glPopMatrix();
+        break;
 
-    glPushMatrix();
+    case MENU:
+        glPushMatrix();
+        glScaled(.33, 1, 1.0);
+        //glScalef(6.3,6.3,1);//trying something differnt
+        menu->drawSquare(screenWidth,screenHeight);
+        glPopMatrix();
+        break;
 
-     glTranslated(0,0,-4.0);              //placing objects
-     glScalef(6.3,6.3,1);
-     plxForest->drawSquare(screenWidth,screenHeight); // draw background
-     plxForest->scroll(false,"right",0.0005);            // Automatic background movement
+    //there should be a "help" state case here
+    //we're low on time, it's probably not gonna get implemented.
 
-    glPopMatrix();
+    case GAME:
+        glPushMatrix();
+
+        glTranslated(0,0,-4.0);              //placing objects
+        glScalef(6.3,6.3,1);
+        plxForest->drawSquare(screenWidth,screenHeight); // draw background
+        plxForest->scroll(false,"right",0.0005);            // Automatic background movement
+
+        glPopMatrix();
 
 
-/*	glPushMatrix();                      // grouping starts
-    glTranslated(0,0,-8.0);              //placing objects
-    myModel->drawModel();             //Teapot model
 
-    glPopMatrix();                       // grouping ends*/
-    glPushMatrix();
-     ply->actions();
-     ply->drawPlayer();
-    glPopMatrix();
 
-    glPushMatrix();
-     npc->drawNPC();
-    glPopMatrix();
+        /*	glPushMatrix();                      // grouping starts
+            glTranslated(0,0,-8.0);              //placing objects
+            myModel->drawModel();             //Teapot model
 
-    ply->hungerlower();
-    cout << ply->hunger << endl;
+            glPopMatrix();                       // grouping ends*/
 
-    for(int i =0; i<20;i++) {
-        food[i].action = 0;
-        if(enms[i].xPos<-2.0)
+
+        glPushMatrix();             //draw player
+         ply->actions();
+         ply->drawPlayer();
+        glPopMatrix();
+
+        glPushMatrix();             // draw NPC
+         npc->drawNPC();
+        glPopMatrix();
+
+        //initializing the hunger stat?
+        ply->hungerlower();
+        cout << ply->hunger << endl;
+
+        //start of food mechanic visual draw, the for loop
+        for(int i =0; i<20;i++) {
+            food[i].action = 0;
+            if(enms[i].xPos<-2.0)
+            {
+                enms[i].action =0;
+                enms[i].yPos =-0.2;
+                enms[i].xMove =0.01;
+
+            }
+            else if(enms[i].xPos >2.0)
+            {
+                enms[i].action =1;
+                enms[i].xMove = -0.01;
+                enms[i].yPos =-0.2;
+            }
+
+        enms[i].xPos +=enms[i].xMove;
+
+        if(ply->action == 0 && ply->xPos > enms[i].xPos)
         {
-            enms[i].action =0;
-            enms[i].yPos =-0.2;
-            enms[i].xMove =0.01;
+            if(hit->isCollisionRadius(ply->xPos,ply->yPos,enms[i].xPos, enms[i].yPos,0.1,0.11))
 
+            if(fabs(enms[i].xPos - ply->xPos)<0.1)
+            enms[i].action =2;
         }
-        else if(enms[i].xPos >2.0)
+
+        if(ply->action == 1 && ply->xPos < enms[i].xPos)
         {
-            enms[i].action =1;
-            enms[i].xMove = -0.01;
-            enms[i].yPos =-0.2;
+            if(hit->isCollisionRadius(ply->xPos,ply->yPos,enms[i].xPos, enms[i].yPos,0.1,0.11))
+            enms[i].action =3;
         }
 
-       enms[i].xPos +=enms[i].xMove;
+        if(hit->isCollisionRadius(ply->xPos,ply->yPos,food[i].xPos, food[i].yPos,0.1,0.11)){
+            food[i].action  = 4;
+            ply->hunger = ply->hunger + 1;
+            cout <<"Acorn collision" << endl;
+        }
 
-       if(ply->action == 0 && ply->xPos > enms[i].xPos)
-       {
-           if(hit->isCollisionRadius(ply->xPos,ply->yPos,enms[i].xPos, enms[i].yPos,0.1,0.11))
-
-           if(fabs(enms[i].xPos - ply->xPos)<0.1)
-           enms[i].action =2;
-       }
-
-       if(ply->action == 1 && ply->xPos < enms[i].xPos)
-       {
-           if(hit->isCollisionRadius(ply->xPos,ply->yPos,enms[i].xPos, enms[i].yPos,0.1,0.11))
-           enms[i].action =3;
-       }
-
-       if(hit->isCollisionRadius(ply->xPos,ply->yPos,food[i].xPos, food[i].yPos,0.1,0.11)){
-        food[i].action  = 4;
-        ply->hunger = ply->hunger + 1;
-        cout <<"Acorn collision" << endl;
-       }
-
-       enms[i].actions();
-       food[i].actions();
-    }
+        enms[i].actions();
+        food[i].actions();
+        }
     // end of for loop
+        break;
+
+        default:
+        break;
+
+        //there should be a "pause" menu state here.
+        //we'll see if that gets implemented, no promises.
+
+
+
+    }
+
+
 }
 
 GLvoid _glScene::reSizeScene(GLsizei width, GLsizei height)
@@ -177,7 +248,7 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         case WM_KEYDOWN:
 
              kBMs->wParam = wParam;
-             kBMs->keyPressed(myModel); //handling Model Movements
+             kBMs->keyPressed(myModel, menuManager); //handling Model Movements
              kBMs->keyPressed(ply);     // handling player movement
              kBMs->keyEnv(plxForest, 0.01);   //handling environment
              kBMs->keyPressed(snds);

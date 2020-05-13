@@ -49,6 +49,7 @@
 			<Add library="../common/lib/libirrKlang.a" />
 			<Add directory="C:/Users/Dhanyu/Desktop/Game2020/common/lib" />
 		</Linker>
+		<Unit filename="include/_MenuManager.h" />
 		<Unit filename="include/_Model.h" />
 		<Unit filename="include/_checkCollision.h" />
 		<Unit filename="include/_enms.h" />
@@ -63,6 +64,7 @@
 		<Unit filename="include/_textureLoader.h" />
 		<Unit filename="include/_timer.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/_MenuManager.cpp" />
 		<Unit filename="src/_Model.cpp" />
 		<Unit filename="src/_checkCollision.cpp" />
 		<Unit filename="src/_enms.cpp" />

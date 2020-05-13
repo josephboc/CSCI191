@@ -36,6 +36,23 @@ void _parallax::drawSquare(float width, float height)
 
 }
 
+void _parallax::drawBacking(float width, float height){
+    this->bTex->TextureBinder();
+    glScaled(1, 1, 1.0);
+    glBegin(GL_POLYGON);
+        glTexCoord2f(xMin, yMax);
+        glVertex3f(-width/height, -1, -10.0);
+        glTexCoord2f(xMax, yMax);
+        glVertex3f(width/height,-1,-10.0);
+        glTexCoord2f(xMax, yMin);
+        glVertex3f(width/height,1,-10.0);
+        glTexCoord2f(xMin, yMin);
+        glVertex3f(-width/height,1,-10.0);
+
+    glEnd();
+
+}
+
 void _parallax::parallaxInit(char* fileName)
 {
     bTex->loadTexture(fileName);
