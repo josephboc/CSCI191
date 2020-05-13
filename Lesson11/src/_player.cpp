@@ -1,3 +1,4 @@
+
 #include "_player.h"
 
 _textureLoader *T= new _textureLoader();
@@ -7,10 +8,10 @@ _timer *tmr = new _timer();
 _player::_player()
 {
     //ctor
-    verticies[0].x=0.0; verticies[0].y=0.0;verticies[0].z=-.2;
-    verticies[1].x=.2; verticies[1].y=0.0;verticies[1].z=-.2;
-    verticies[2].x=.2; verticies[2].y=.2;verticies[2].z=-.2;
-    verticies[3].x=0.0; verticies[3].y=.2;verticies[3].z=-.2;
+    verticies[0].x=0.0; verticies[0].y=0.0;verticies[0].z=-1.0;
+    verticies[1].x=1.0; verticies[1].y=0.0;verticies[1].z=-1.0;
+    verticies[2].x=1.0; verticies[2].y=1.0;verticies[2].z=-1.0;
+    verticies[3].x=0.0; verticies[3].y=1.0;verticies[3].z=-1.0;
 
     runSpeed =0;
     jumpSpeed =0;
@@ -34,10 +35,10 @@ _player::_player()
     yMin=0.0;
     yMax=0.125;
     xMax=1.0/frames;
-    xMove = .1; //aka speed
-
+    xMove = .1;
     hunger = 1;
     hungerrate = .01;
+    speed = 0.0;
     strength = 0.0;
     cuteness = 0.0;
 }
@@ -163,6 +164,7 @@ void _player::actions()
              tmr->reset();
                 }
             break;
+        
         case 4:
 
                 if(tmr->getTicks()>60)
