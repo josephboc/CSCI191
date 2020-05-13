@@ -11,12 +11,14 @@ _npc::_npc()
     ySize = 0.5;
 
     rotateX=rotateY=rotateZ =0.0;
+
     frames =12;
 
     xMin=yMin=0.0;
     xMax=1.0/frames;
     yMax=0.125;
     action =1;
+
 
     xMove= 0.01;
 }

@@ -7,10 +7,10 @@ _timer *tmr = new _timer();
 _player::_player()
 {
     //ctor
-    verticies[0].x=0.0; verticies[0].y=0.0;verticies[0].z=-1.0;
-    verticies[1].x=1.0; verticies[1].y=0.0;verticies[1].z=-1.0;
-    verticies[2].x=1.0; verticies[2].y=1.0;verticies[2].z=-1.0;
-    verticies[3].x=0.0; verticies[3].y=1.0;verticies[3].z=-1.0;
+    verticies[0].x=0.0; verticies[0].y=0.0;verticies[0].z=-.2;
+    verticies[1].x=.2; verticies[1].y=0.0;verticies[1].z=-.2;
+    verticies[2].x=.2; verticies[2].y=.2;verticies[2].z=-.2;
+    verticies[3].x=0.0; verticies[3].y=.2;verticies[3].z=-.2;
 
     runSpeed =0;
     jumpSpeed =0;
@@ -25,6 +25,7 @@ _player::_player()
     xRotation=0.0;
     yRotation=0.0;
     zRotation=0.0;
+    skillpoints = 0.0;
 
     action =-1;
 
@@ -33,10 +34,10 @@ _player::_player()
     yMin=0.0;
     yMax=0.125;
     xMax=1.0/frames;
-    xMove = .1;
+    xMove = .1; //aka speed
+
     hunger = 1;
     hungerrate = .01;
-    speed = 0.0;
     strength = 0.0;
     cuteness = 0.0;
 }
@@ -161,6 +162,117 @@ void _player::actions()
              yPos = yPos - xMove/2;
              tmr->reset();
                 }
+            break;
+        case 4:
+
+                if(tmr->getTicks()>60)
+                {
+                    frames= 8.0;
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.125;
+                yMax= 0.25;
+                xPos = xPos -xMove/2;
+                if(xMax>=1){xMin=0.0; xMax=1/frames;}
+
+             tmr->reset();
+                }
+                break;
+        case 5:
+               frames= 8.0;
+                if(tmr->getTicks()>60)
+                {
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.0;
+                yMax= 0.125;
+                xPos = xPos +xMove/2;
+
+                if(xMax>=1){xMin=0.0; xMax=1.0/frames;}
+
+                tmr->reset();
+                }
+                break;
+        case 6:
+               frames= 8.0;
+                if(tmr->getTicks()>20)
+                {
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.0;
+                yMax= 0.125;
+                //xPos = xPos +xMove;
+
+                if(xMax>=1){xMin=0.0; xMax=1.0/frames;}
+
+                tmr->reset();
+                }
+                if(skillpoints > 1){
+                xMove = xMove + .1;
+                //skillpoints = skillpoints - 1;
+                }
+
+            break;
+        case 7:
+               frames= 8.0;
+                if(tmr->getTicks()>20)
+                {
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.0;
+                yMax= 0.125;
+                //xPos = xPos +xMove;
+
+                if(xMax>=1){xMin=0.0; xMax=1.0/frames;}
+
+                tmr->reset();
+                }
+                if(skillpoints > 1){
+                strength = strength + .1;
+                //skillpoints = skillpoints - 1;
+                }
+
+            break;
+        case 8:
+               frames= 8.0;
+                if(tmr->getTicks()>20)
+                {
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.0;
+                yMax= 0.125;
+                //xPos = xPos +xMove;
+
+                if(xMax>=1){xMin=0.0; xMax=1.0/frames;}
+
+                tmr->reset();
+                }
+                if(skillpoints > 1){
+                cuteness = cuteness + .1;
+                //skillpoints = skillpoints - 1;
+                }
+
+            break;
+
+        case 9:
+               frames= 8.0;
+                if(tmr->getTicks()>20)
+                {
+                xMin+=1.0/frames;
+                xMax+=1.0/frames;
+                yMin= 0.0;
+                yMax= 0.125;
+                //xPos = xPos +xMove;
+
+                if(xMax>=1){xMin=0.0; xMax=1.0/frames;}
+
+                tmr->reset();
+                }
+                if(skillpoints > 1){
+                hungerrate = hungerrate - .00001;
+                //skillpoints = skillpoints - 1;
+                }
+
             break;
 
 

@@ -18,6 +18,7 @@ class _food
         void initFood(GLuint);
         void actions();
                    //Movements and actions
+        void output(int x, int y, float r, float g, float b, int font, char *string);
 
         bool isFoodAlive;                  //Status of the Enemy
         GLuint FoodTex;                   //handle Texture
