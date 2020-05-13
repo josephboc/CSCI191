@@ -12,6 +12,7 @@
 #include <_food.h>
 #include <_npc.h>
 #include <_MenuManager.h>
+#include <_texts.h>
 
 _Model *myModel = new _Model();
 _inputs *kBMs = new _inputs();
@@ -83,7 +84,7 @@ GLint _glScene::initGL()
    ply->initPlayer("images/ply2.png");
    ply->yPos = -0.3;
    ply->zPos = -3.0;
-  
+
    txp2->inittext(textTex2->tex);
    txp2->placetext(-1.1,-.65,-2.0);
 
@@ -94,7 +95,7 @@ GLint _glScene::initGL()
 
    txp->xSize = .08;
    txp->ySize = .08;
-  
+
    npc->initNPC(NPCTex->tex);
    npc->xSize = npc->ySize = 0.25;
 
@@ -194,7 +195,7 @@ GLint _glScene::drawScene()
          npc->actions();
          npc->drawNPC();
         glPopMatrix();
-        
+
         glPushMatrix();
           txp->drawtexts();
           txp2->drawtexts();
