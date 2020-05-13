@@ -50,7 +50,7 @@ GLint _glScene::initGL()
    myModel->initModel();
    enmsTex->loadTexture("images/smallblackcat.png");
    foodTex->loadTexture("images/frutis.png");
-   NPCTex->loadTexture("images/npc.png");
+   NPCTex->loadTexture("images/npcs.png");
    plxForest->parallaxInit("images/forest.jpg");
    ply->initPlayer("images/ply2.png");
    ply->yPos = -0.3;
@@ -110,6 +110,8 @@ GLint _glScene::drawScene()
     glPopMatrix();
 
     glPushMatrix();
+     //npc->action = rand() % 5 + 1;
+     npc->actions();
      npc->drawNPC();
     glPopMatrix();
 

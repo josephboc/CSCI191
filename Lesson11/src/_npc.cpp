@@ -11,12 +11,12 @@ _npc::_npc()
     ySize = 0.5;
 
     rotateX=rotateY=rotateZ =0.0;
-    frames =8;
+    frames =12;
 
     xMin=yMin=0.0;
     xMax=1.0/frames;
-    yMax=1.0;
-    action =0;
+    yMax=0.125;
+    action =1;
 
     xMove= 0.01;
 }
@@ -61,18 +61,80 @@ void _npc::initNPC(GLuint tex)
 void _npc::actions()
 {
     switch(action){
-    case 0:
+    case 1: //down
+          frames=12;
           if(TE->getTicks()>60){
             xMin+=1.0/frames;
             xMax+=1.0/frames;
             yMin =0.0;
-            yMax =1.0;
+            yMax =0.125;
 
             rotateZ=0;
-            if(xMax>=1){xMin=0;xMax=1.0/frames;}
+            yPos-=xMove;
+            if(xMax>=1.0/3.0){xMin=0.0;xMax=1.0/12.0;action=5;}
             TE->reset();
           }
-          drawNPC();
+        break;
+
+    case 2: //left
+          frames=12;
+          if(TE->getTicks()>60){
+            xMin+=1.0/frames;
+            xMax+=1.0/frames;
+            yMin =0.25;
+            yMax =0.375;
+
+            rotateZ=0;
+            xPos-=xMove;
+            if(xMax>=1.0/3.0){xMin=0.0;xMax=1.0/12.0;action=5;}
+            TE->reset();
+          }
+        break;
+
+    case 3: //right
+          frames=12;
+          if(TE->getTicks()>60){
+            xMin+=1.0/frames;
+            xMax+=1.0/frames;
+            yMin =0.125;
+            yMax =0.250;
+
+
+            rotateZ=0;
+            xPos+=xMove;
+            if(xMax>=1.0/3.0){xMin=0.0;xMax=1.0/12.0;action=5;}
+            TE->reset();
+          }
+        break;
+
+    case 4: //up
+          frames=12;
+          if(TE->getTicks()>60){
+            xMin+=1.0/frames;
+            xMax+=1.0/frames;
+            yMin =0.375;
+            yMax =0.5;
+
+            rotateZ=0;
+            yPos+=xMove;
+            if(xMax>=1.0/3.0){xMin=0.0;xMax=1.0/12.0;action=5;}
+            TE->reset();
+          }
+        break;
+
+        case 5: //stand
+          frames=12;
+          for(int i=0;i<10;i++){
+          if(TE->getTicks()>60){
+            xMin=0.0;
+            xMax=1.0/frames;
+            yMin =0.0;
+            yMax =0.125;
+
+            rotateZ=0;
+            TE->reset();
+          }}
+          action = rand() % 4+1;
         break;
     }
 

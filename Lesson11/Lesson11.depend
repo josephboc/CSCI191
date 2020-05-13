@@ -66,7 +66,7 @@
 1588129851 c:\users\phill\onedrive\documents\github\csci191\lesson11\include\_gllight.h
 	<_glScene.h>
 
-1588203341 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_glscene.cpp
+1589404389 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_glscene.cpp
 	"_glScene.h"
 	<_glLight.h>
 	<_Model.h>
@@ -216,7 +216,7 @@
 	"_model.h"
 	<_textureLoader.h>
 
-1588200793 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_npc.cpp
+1589404389 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_npc.cpp
 	"_npc.h"
 
 1588200793 source:c:\users\phill\onedrive\documents\github\csci191\lesson11\src\_parallax.cpp
