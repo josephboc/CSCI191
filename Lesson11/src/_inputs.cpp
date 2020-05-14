@@ -37,7 +37,7 @@ void _inputs::keyEnv(_parallax* plx, float speed)
 }
 
 
-void _inputs::keyPressed(_Model* Mdl)
+void _inputs::keyPressed(_Model* Mdl, _MenuManager *menuManager)
 {
     switch(wParam)
     {
@@ -57,6 +57,31 @@ void _inputs::keyPressed(_Model* Mdl)
             Mdl->posZ +=1.0;
         case VK_SUBTRACT: break;
             Mdl->posZ -=1.0;
+
+            //this is where I switch from landing to the menu via the enter key
+        case VK_RETURN:
+            if(menuManager->currState == LANDING){
+                menuManager->currState = MENU;
+            }else if(menuManager->currState == MENU){
+                menuManager->currState = GAME;
+            }
+
+            break;
+
+        case VK_DELETE:
+            if(menuManager->currState == MENU){
+                menuManager->currState == LANDING;
+            }
+
+            break;
+
+        //tab will start our game
+        /*
+        case VK_TAB:
+            if(menuManager->currState == MENU){
+                menuManager->currState = GAME;
+            }
+        */
     }
 }
 

@@ -10,6 +10,7 @@
 #include <iostream>
 #include <_food.h>
 #include <_npc.h>
+#include <_MenuManager.h>
 #include <_timer.h>
 #include <_texts.h>
 _Model *myModel = new _Model();
@@ -23,6 +24,11 @@ _checkCollision *hit= new _checkCollision();
 _sound *snds = new _sound();
 _sound *snds2 = new _sound();
 _npc *npc = new _npc();
+_parallax *cred = new _parallax(1);
+_parallax *menu = new _parallax(1);
+
+//menu stuffs
+_MenuManager *menuManager = new _MenuManager;
 
 _textureLoader *enmsTex = new _textureLoader();
 _textureLoader *foodTex = new _textureLoader();
@@ -53,6 +59,12 @@ _glScene::~_glScene()
 {
     //dtor
 }
+
+//Function for the main so that the game exits when escaped key clicked on the correct MenuStates
+MenuStates _glScene::sendScreen(){
+    return menuManager->currState;
+}
+
 GLint _glScene::initGL()
 {
 
@@ -76,6 +88,7 @@ GLint _glScene::initGL()
    ply->initPlayer("images/ply2.png");
    ply->yPos = -0.3;
    ply->zPos = -2.5;
+  
    txp2->inittext(textTex2->tex);
    txp2->placetext(-1.04,-.645,-2.0);
 
@@ -89,7 +102,9 @@ GLint _glScene::initGL()
    npc->initNPC(NPCTex->tex);
    npc->xSize = npc->ySize = 0.25;
 
-
+   //menu state images
+    cred->parallaxInit("images/group_credits_x_w.png");
+    menu->parallaxInit("images/menu_screen.png");
 
 
    snds->initSounds();
@@ -116,8 +131,7 @@ GLint _glScene::initGL()
    {
 
        enms[i].initEnemy(enmsTex->tex);
-if(i < (counter / 2)){ enms[i].placeEnemy((float)(rand()%20)/10.0,(rand() % 9) / 10.0,-2.5);
-}
+        if(i < (counter / 2)){ enms[i].placeEnemy((float)(rand()%20)/10.0,(rand() % 9) / 10.0,-2.5);}
         else{ enms[i].placeEnemy((float)(rand()/float(RAND_MAX))*1-2.5,(float)(rand() % 10) / -10.0,-2.5);}
        enms[i].xMove= (float)(rand()/float(RAND_MAX))/100;
        enms[i].xSize = enms[i].ySize = .5;
@@ -311,7 +325,32 @@ GLint _glScene::drawScene()
 	glLoadIdentity();
 
    // glColor3f(1.0,0.0,0.0);              // setting colors
+    menuManager->currState;
+    switch(menuManager->currState){
+    case LANDING:
+        //starts as first thing when game loads, have no idea how the hell
+        //it's just drawing an frigging square.
+        glPushMatrix();
+        glScaled(0.33, 1.0, 1.0);
+        //glTranslated(0,0,-4.0);              //placing objects
+        //glScalef(6.3 ,6.3 , 1.0);
+        cred->drawBacking(screenWidth,screenHeight);
+        //cred->scroll(false,"right",0.0005);
+        glPopMatrix();
+        break;
 
+    case MENU:
+        glPushMatrix();
+        glScaled(.33, 1, 1.0);
+        //glScalef(6.3,6.3,1);//trying something differnt
+        menu->drawBacking(screenWidth,screenHeight);
+        glPopMatrix();
+        break;
+
+    //there should be a "help" state case here
+    //we're low on time, it's probably not gonna get implemented.
+
+    case GAME:
     glPushMatrix();
 
      glTranslated(0,0,-4.0);              //placing objects
@@ -531,6 +570,10 @@ if(ply->health <= 0){
 
     }
     // end of for loop
+        break;
+
+        default:
+        break;
 
 }
 GLvoid _glScene::reSizeScene(GLsizei width, GLsizei height)
