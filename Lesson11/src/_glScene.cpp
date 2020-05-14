@@ -80,7 +80,7 @@ GLint _glScene::initGL()
    myModel->initModel();
    enmsTex->loadTexture("images/smallblackcat.png");
    foodTex->loadTexture("images/frutis.png");
-   NPCTex->loadTexture("images/npc.png");
+   NPCTex->loadTexture("images/npcs.png");
    textTex->loadTexture("images/percent sprites.png");
    textTex2->loadTexture("images/health sprites.png");
    plxForest->parallaxInit("images/fresnostate4.png");
@@ -88,7 +88,7 @@ GLint _glScene::initGL()
    ply->initPlayer("images/ply2.png");
    ply->yPos = -0.3;
    ply->zPos = -2.5;
-  
+
    txp2->inittext(textTex2->tex);
    txp2->placetext(-1.04,-.645,-2.0);
 
@@ -375,6 +375,8 @@ GLint _glScene::drawScene()
     glPopMatrix();
 
     glPushMatrix();
+     npc->action= rand() % 5 +1;
+     npc->actions();
      npc->drawNPC();
     glPopMatrix();
     txp->drawtexts();
@@ -575,7 +577,7 @@ if(ply->health <= 0){
         default:
         break;
 
-}
+}}
 GLvoid _glScene::reSizeScene(GLsizei width, GLsizei height)
 {
     GLfloat aspectRatio = (GLfloat)width/(GLfloat) height; // ratio for window mode
@@ -593,7 +595,7 @@ int _glScene::winMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         case WM_KEYDOWN:
 
              kBMs->wParam = wParam;
-             kBMs->keyPressed(myModel); //handling Model Movements
+             kBMs->keyPressed(myModel, menuManager); //handling Model Movements
              kBMs->keyPressed(ply);     // handling player movement
              kBMs->keyEnv(plxForest, 0.001);   //handling environment
              kBMs->keyPressed(snds);

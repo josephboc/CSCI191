@@ -15,6 +15,7 @@
 #include <_sound.h>
 #include <iostream>
 #include <_food.h>
+#include <_MenuManager.h>
 #include<_timer.h>
 #include<iostream>
 
@@ -43,6 +44,7 @@ class _glScene
         bool switching2;
         bool switching3;
         bool startover;
+        MenuStates sendScreen();
 
         float screenHeight, screenWidth; // to map background images
     protected:

@@ -20,7 +20,7 @@ _npc::_npc()
     action =1;
 
 
-    xMove= 0.01;
+    xMove= 0.05;
 }
 
 _npc::~_npc()
