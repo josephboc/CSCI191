@@ -26,6 +26,7 @@ _sound *snds2 = new _sound();
 _npc *npc = new _npc();
 _parallax *cred = new _parallax(1);
 _parallax *menu = new _parallax(1);
+_parallax *help = new _parallax(1);
 
 //menu stuffs
 _MenuManager *menuManager = new _MenuManager;
@@ -105,6 +106,7 @@ GLint _glScene::initGL()
    //menu state images
     cred->parallaxInit("images/group_credits_x_w.png");
     menu->parallaxInit("images/menu_screen.png");
+    help->parallaxInit("images/help_page.png");
 
 
    snds->initSounds();
@@ -336,6 +338,13 @@ GLint _glScene::drawScene()
         //glScalef(6.3 ,6.3 , 1.0);
         cred->drawBacking(screenWidth,screenHeight);
         //cred->scroll(false,"right",0.0005);
+        glPopMatrix();
+        break;
+
+    case HELP:
+        glPushMatrix();
+        glScaled(0.33, 1.0, 1.0);
+        help->drawBacking(screenWidth, screenHeight);
         glPopMatrix();
         break;
 

@@ -70,10 +70,19 @@ void _inputs::keyPressed(_Model* Mdl, _MenuManager *menuManager)
 
         case VK_DELETE:
             if(menuManager->currState == MENU){
-                menuManager->currState == LANDING;
+                menuManager->currState = LANDING;
+            }else if(menuManager->currState == GAME){
+                menuManager->currState = MENU;
             }
 
             break;
+
+        case VK_TAB:
+            if(menuManager->currState == MENU){
+                menuManager->currState = HELP;
+            }else if(menuManager->currState == HELP){
+                menuManager->currState = MENU;
+            }
 
         //tab will start our game
         /*
