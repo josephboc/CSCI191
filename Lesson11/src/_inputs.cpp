@@ -53,12 +53,17 @@ void _inputs::keyPressed(_Model* Mdl, _MenuManager *menuManager)
         case VK_UP:
             Mdl->rotateX +=1.0;
             break;
-        case VK_ADD:break;
+
+        case VK_ADD:
             Mdl->posZ +=1.0;
-        case VK_SUBTRACT: break;
+            break;
+        case VK_SUBTRACT:
             Mdl->posZ -=1.0;
+            break;
 
             //this is where I switch from landing to the menu via the enter key
+
+
         case VK_RETURN:
             if(menuManager->currState == LANDING){
                 menuManager->currState = MENU;
@@ -70,10 +75,21 @@ void _inputs::keyPressed(_Model* Mdl, _MenuManager *menuManager)
 
         case VK_DELETE:
             if(menuManager->currState == MENU){
-                menuManager->currState == LANDING;
+                menuManager->currState = LANDING;
+            }else if(menuManager->currState == GAME){
+                menuManager->currState = MENU;
             }
 
             break;
+
+        case VK_TAB
+            if(menuManager->currState == MENU){
+                menuManager->currState = HELP;
+            }else if(menuManager->currState == HELP){
+                menuManager->currState = MENU;
+            }
+
+
 
         //tab will start our game
         /*
@@ -100,6 +116,24 @@ void _inputs::keyPressed(_player* ply)
             break;
         case VK_UP:
             ply->action=3;
+            break;
+        case VK_NUMPAD1:
+            ply->action=4;
+            break;
+        case VK_NUMPAD2:
+            ply->action=5;
+            break;
+        case VK_NUMPAD3:
+            ply->action=6;
+            break;
+        case VK_NUMPAD4:
+            ply->action=7;
+            break;
+        case VK_NUMPAD5:
+            ply->action=8;
+            break;
+        case VK_NUMPAD6:
+            ply->action=9;
             break;
     }
 }
