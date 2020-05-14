@@ -31,6 +31,7 @@ void _sound::pauseSound(char* File)
     engine->play2D(File,true,false);
 }
 
+
 int _sound::initSounds()
 {
     if(!engine){cout<< "The Sound Engine did not startup\n";

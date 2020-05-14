@@ -22,6 +22,7 @@ class _sound
         void pauseMusic(char *);
         void playSound(char *);
         void pauseSound(char *);
+        void isFinished(char *);
         int initSounds();
 
     protected:

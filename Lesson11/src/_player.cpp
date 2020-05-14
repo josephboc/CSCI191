@@ -1,4 +1,3 @@
-
 #include "_player.h"
 
 _textureLoader *T= new _textureLoader();
@@ -8,10 +7,10 @@ _timer *tmr = new _timer();
 _player::_player()
 {
     //ctor
-    verticies[0].x=0.0; verticies[0].y=0.0;verticies[0].z=-1.0;
-    verticies[1].x=1.0; verticies[1].y=0.0;verticies[1].z=-1.0;
-    verticies[2].x=1.0; verticies[2].y=1.0;verticies[2].z=-1.0;
-    verticies[3].x=0.0; verticies[3].y=1.0;verticies[3].z=-1.0;
+    verticies[0].x=0.0; verticies[0].y=0.0;verticies[0].z=-.2;
+    verticies[1].x=.2; verticies[1].y=0.0;verticies[1].z=-.2;
+    verticies[2].x=.2; verticies[2].y=.2;verticies[2].z=-.2;
+    verticies[3].x=0.0; verticies[3].y=.2;verticies[3].z=-.2;
 
     runSpeed =0;
     jumpSpeed =0;
@@ -29,18 +28,18 @@ _player::_player()
     skillpoints = 0.0;
 
     action =-1;
-
+    health = 100;
     frames =8;
     xMin=0/frames;
     yMin=0.0;
     yMax=0.125;
     xMax=1.0/frames;
-    xMove = .1;
+    xMove = .1; //aka speed
     hunger = 1;
     hungerrate = .01;
-    speed = 0.0;
     strength = 0.0;
     cuteness = 0.0;
+
 }
 
 _player::~_player()
@@ -95,8 +94,10 @@ if(tmr->getTicks()>60)
                 {
 hunger = hunger - hungerrate;
 if(hunger <= 0){
-cout << "Dead" << endl;
+//cout << "Dead" << endl;
 }
+if(health <= 0)
+//    cout << "No Health" << endl;
                 tmr->reset();
                 }
 }
@@ -164,7 +165,6 @@ void _player::actions()
              tmr->reset();
                 }
             break;
-        
         case 4:
 
                 if(tmr->getTicks()>60)
@@ -209,8 +209,8 @@ void _player::actions()
 
                 tmr->reset();
                 }
-                if(skillpoints > 1){
-                xMove = xMove + .1;
+                if(skillpoints > 1 && xMove < .2){
+                xMove = xMove + .01;
                 //skillpoints = skillpoints - 1;
                 }
 
@@ -230,7 +230,7 @@ void _player::actions()
                 tmr->reset();
                 }
                 if(skillpoints > 1){
-                strength = strength + .1;
+                strength = strength + 5;
                 //skillpoints = skillpoints - 1;
                 }
 
@@ -270,10 +270,10 @@ void _player::actions()
 
                 tmr->reset();
                 }
-                if(skillpoints > 1){
-                hungerrate = hungerrate - .00001;
+                //if(skillpoints > 1){
+                skillpoints = skillpoints + 100;
                 //skillpoints = skillpoints - 1;
-                }
+              //  }
 
             break;
 

@@ -12,6 +12,7 @@ class _checkCollision
         bool isCollisionRadius(float, float,float,float,float, float);
         // position and radius of both objects
         bool isCollisioFloor(float,float,float);
+        bool isLinearCollision(float, float);
         // position, radius and wall
         bool isCollisionrayCircle(float,float,float);
         // position, ray position and circle

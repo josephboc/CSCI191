@@ -28,6 +28,7 @@ class _inputs
         void mouseEventUp();
         void mouseWheel(_Model *,double);
         void mouseMove(_Model *,double ,double );
+        int speed2;
 
 
         double prev_Mouse_X;

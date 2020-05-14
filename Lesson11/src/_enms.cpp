@@ -42,13 +42,13 @@ void _enms::drawEnemy()
 
     glBegin(GL_POLYGON);
         glTexCoord2f(xMin,yMin);
-        glVertex3f(1.0,1.0,0.0);
+        glVertex3f(.5,.5,0.0);
         glTexCoord2f(xMax,yMin);
-        glVertex3f(-1.0,1.0,0.0);
+        glVertex3f(-.5,.5,0.0);
         glTexCoord2f(xMax,yMax);
-        glVertex3f(-1.0, -1.0, 0.0);
+        glVertex3f(-.5, -.5, 0.0);
         glTexCoord2f(xMin,yMax);
-        glVertex3f(1.0,-1.0,0.0);
+        glVertex3f(.5,-.5,0.0);
     glEnd();
 
     glPopMatrix();
