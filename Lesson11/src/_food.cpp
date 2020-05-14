@@ -17,7 +17,7 @@ _food::_food()
     xMin=yMin=0.0;
     xMax=1.0/(float)frames;
     yMax=1.0;
-    action =0;
+    action;
 
 }
 

@@ -41,7 +41,8 @@ private:
         float yRotation;
         float zRotation;
         float xMove;
-
+        float health;
+        int foodstack;
 
         float runSpeed;
         float jumpSpeed;
