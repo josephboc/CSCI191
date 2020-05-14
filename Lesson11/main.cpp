@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include <windows.h>		// Header File For Windows
+#include <_MenuManager.h>
+
 
 using namespace std;
 
@@ -31,6 +33,8 @@ LRESULT	CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);	// Declaration For WndProc
 
 _glScene *Scene = new _glScene();
 
+float FramesPSec;
+float timeNow, timePrev;
 /////////////////////////////////////////////////////////////////////////////////////////////////
 //										THE KILL GL WINDOW
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -227,7 +231,8 @@ BOOL CreateGLWindow(char* title, int width, int height, int bits, bool fullscree
 		MessageBox(NULL,"Initialization Failed.","ERROR",MB_OK|MB_ICONEXCLAMATION);
 		return FALSE;								// Return FALSE
 	}
-
+    FramesPSec = 60.0;
+    timePrev = 0.0;
 	return TRUE;									// Success
 }
 
@@ -297,7 +302,7 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 			Scene->reSizeScene(LOWORD(lParam),HIWORD(lParam));
 			return 0;								// Jump Back
 		}
-
+        //discrpance here
         case WM_LBUTTONDOWN:
         case WM_RBUTTONDOWN:
         case WM_MBUTTONDOWN:
@@ -359,10 +364,15 @@ int WINAPI WinMain(	HINSTANCE	hInstance,			// Instance
 		else										// If There Are No Messages
 		{
 			// Draw The Scene.  Watch For ESC Key And Quit Messages From DrawGLScene()
-			if (!active  || keys[VK_ESCAPE])	// Active?  Was There A Quit Received?
-			{
-				done=TRUE;							// ESC or DrawGLScene Signalled A Quit
-			}
+			//if (!active  || keys[VK_ESCAPE])	// Active?  Was There A Quit Received?
+			//{
+			//	done=TRUE;							// ESC or DrawGLScene Signalled A Quit
+			//}
+
+            if(Scene->sendScreen() == QUIT){
+                done = TRUE; //Yeet the program
+
+            }
 			else									// Not Time To Quit, Update Screen
 			{
 			    Scene->drawScene();

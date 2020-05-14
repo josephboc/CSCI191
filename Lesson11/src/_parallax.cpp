@@ -12,6 +12,13 @@ _parallax::_parallax()
     yMin =0.5;
 }
 
+_parallax::_parallax(int x){
+    xMax = 1.0;
+    yMax = 1.0;
+    xMin = 0.0;
+    yMin = 0.0;
+}
+
 _parallax::~_parallax()
 {
     //dtor
@@ -33,6 +40,30 @@ void _parallax::drawSquare(float width, float height)
 
     glEnd();
 
+
+}
+
+void _parallax::drawBacking(float width, float height){
+
+
+    this->bTex->TextureBinder();
+
+
+    glScaled(11, 3.33, 1.0);
+    glBegin(GL_POLYGON);
+        glTexCoord2f(xMin, yMax);
+        glVertex3f(-width/height, -1, -8.0f);
+
+        glTexCoord2f(xMax, yMax);
+        glVertex3f(width/height,-1,-8.0f);
+
+        glTexCoord2f(xMax, yMin);
+        glVertex3f(width/height,1,-8.0f);
+
+        glTexCoord2f(xMin, yMin);
+        glVertex3f(-width/height,1,-8.0f);
+
+    glEnd();
 
 }
 
